@@ -10,6 +10,7 @@ func main() {
 		Title:          "Magic Game",
 		Width:          800,
 		Height:         600,
+		StandardInputs: true,
 	}
 
 	engo.Run(opts, &scenes.GameScene{})
