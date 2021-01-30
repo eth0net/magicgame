@@ -30,7 +30,7 @@ type GameScene struct{}
 
 // Preload is called before loading resources
 func (g *GameScene) Preload() {
-	err := engo.Files.Load("tilemap/fantasy1-min.tmx")
+	err := engo.Files.Load("tilemaps/fantasy1-min.tmx")
 	if err != nil {
 		panic(err)
 	}
@@ -38,7 +38,7 @@ func (g *GameScene) Preload() {
 
 // Setup is called before the main loop
 func (g *GameScene) Setup(u engo.Updater) {
-	resource, err := engo.Files.Resource("tilemap/fantasy1-min.tmx")
+	resource, err := engo.Files.Resource("tilemaps/fantasy1-min.tmx")
 	if err != nil {
 		panic(err)
 	}
