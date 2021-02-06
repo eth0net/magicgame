@@ -1,19 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="50" height="50" tilewidth="32" tileheight="32" infinite="0" nextlayerid="11" nextobjectid="4">
-  <editorsettings>
-    <export target="fantasy1-min.tmx" format="tmx" />
-  </editorsettings>
-  <tileset firstgid="1" source="../tilesets/Grass1.tsx" />
-  <tileset firstgid="49" source="../tilesets/Water1.tsx" />
-  <tileset firstgid="433" source="../tilesets/Grass1-Dirt1.tsx" />
-  <layer id="1" name="Ground" width="50" height="50">
-    <data encoding="base64" compression="zlib">
+<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="50" height="50" tilewidth="32" tileheight="32" infinite="0" nextlayerid="13" nextobjectid="4">
+ <editorsettings>
+  <export target="fantasy1-min.tmx" format="tmx"/>
+ </editorsettings>
+ <tileset firstgid="1" source="../tilesets/Grass1.tsx"/>
+ <tileset firstgid="49" source="../tilesets/Water1.tsx"/>
+ <tileset firstgid="433" source="../tilesets/Grass1-Dirt1.tsx"/>
+ <tileset firstgid="481" source="../tilesets/BaseChip.tsx"/>
+ <layer id="1" name="Ground" width="50" height="50">
+  <data encoding="base64" compression="zlib">
    eJztzzEOQEAQRuHZBhUq3P8QqKwKxzKJK2yy/8grXv3yNWbWBq/zem8I3ohDKhxa4dAKh1Y4tMKhFY6vNZlthdpTPcfh71yoEwcOHDhw4MCBAwcOHDhwhHFc/r4L9VR0qIRDKxxa4dAKh1Y4tMKh1Z8ckzcHb/FespqnHA==
-</data>
-  </layer>
-  <layer id="7" name="Water" width="50" height="50">
-    <data encoding="base64" compression="zlib">
+  </data>
+ </layer>
+ <layer id="7" name="Water" width="50" height="50">
+  <data encoding="base64" compression="zlib">
    eJzt00EOQDAQheHpoZST4WS4WK1NQ0MaFrVphv9LXsTuTV4qAgAAAAAAvs5rWk1Xu8hLqb93IoN+G2fznl72/nnGmqUKxS3SDnniLlY2edrC2iaTZpX7G4JmqVet2BfeRxQ3meXcJRz/lra4SvdY7Q8AAAAAAP5nA6d3HVQ=
-</data>
-  </layer>
+  </data>
+ </layer>
+ <layer id="11" name="Trees" width="50" height="50">
+  <data encoding="base64" compression="zlib">
+   eJzt0TEKgDAUBNH/c/+LaqcnMBY2QTuLWZiBsGKV8HpUjXk6fAl3+GOf77Orjs7b1WOf/9La+t0jLT1Y6cFKD1Z6sNKDlR6s9GClBys9WOnBSg9WerDSg5UerPRgpQcrPVjpwUoPVnqw0oPVl8f9vrRdPdKXcIc/9gLmWKzz
+  </data>
+ </layer>
 </map>

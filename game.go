@@ -7,9 +7,10 @@ import (
 
 func main() {
 	opts := engo.RunOptions{
-		Title:  "Magic Game",
-		Width:  800,
-		Height: 600,
+		Title:       "Magic Game",
+		Width:       800,
+		Height:      600,
+		GlobalScale: engo.Point{X: 2, Y: 2},
 	}
 
 	engo.Run(opts, &scenes.GameScene{})
