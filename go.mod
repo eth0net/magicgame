@@ -5,6 +5,7 @@ go 1.15
 require (
 	github.com/EngoEngine/ecs v1.0.5
 	github.com/EngoEngine/engo v1.0.5
+	github.com/EngoEngine/gl v1.0.11 // indirect
 	github.com/go-gl/glfw/v3.3/glfw v0.0.0-20201108214237-06ea97f0c265 // indirect
 	github.com/go-gl/mathgl v1.0.0 // indirect
 	github.com/hajimehoshi/go-mp3 v0.3.1 // indirect
