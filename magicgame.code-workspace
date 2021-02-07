@@ -5,6 +5,9 @@
     },
     {
       "path": "../traffic-manager"
+    },
+    {
+      "path": "../engo"
     }
   ],
   "settings": {}

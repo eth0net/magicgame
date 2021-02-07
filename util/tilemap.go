@@ -12,6 +12,7 @@ import (
 // of a single tile of the game map.
 type Tile struct {
 	ecs.BasicEntity
+	common.AnimationComponent
 	common.CollisionComponent
 	common.RenderComponent
 	common.SpaceComponent
@@ -42,12 +43,18 @@ func NewTilemap(url string) (tm *Tilemap, err error) {
 				log.Printf("Tile is lacking image at point: %v", tile.Point)
 			}
 			t := &Tile{BasicEntity: ecs.NewBasic()}
+			if len(tile.Drawables) > 0 {
+				t.AnimationComponent = common.NewAnimationComponent(tile.Drawables, 0.1)
+				t.AnimationComponent.AddDefaultAnimation(tile.Animation)
+			}
 			t.RenderComponent = common.RenderComponent{
 				Drawable:    tile.Image,
 				Scale:       engo.Point{X: 1, Y: 1},
 				StartZIndex: float32(idx),
 			}
-			t.SpaceComponent.Position = tile.Point
+			t.SpaceComponent = common.SpaceComponent{
+				Position: tile.Point,
+			}
 			tm.Tiles = append(tm.Tiles, t)
 		}
 	}
