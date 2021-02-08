@@ -1,11 +1,13 @@
 package scenes
 
 import (
+	"bytes"
 	"log"
 
 	"github.com/EngoEngine/ecs"
 	"github.com/EngoEngine/engo"
 	"github.com/EngoEngine/engo/common"
+	"github.com/raziel2244/magicgame/assets"
 	"github.com/raziel2244/magicgame/entities"
 	"github.com/raziel2244/magicgame/systems"
 	"github.com/raziel2244/magicgame/util"
@@ -43,11 +45,25 @@ type GameScene struct {
 
 // Preload is called before loading resources.
 func (g *GameScene) Preload() {
-	err := engo.Files.Load(tilemapURL)
-	if err != nil {
-		panic(err)
+	files := []string{
+		"spritesheets/player.png",
+		"tilesets/BaseChip.png",
+		"tilesets/Dirt1.png",
+		"tilesets/Grass1-Dirt1.png",
+		"tilesets/Grass1.png",
+		"tilesets/Water1.png",
+		"tilemaps/fantasy1-min.tmx",
 	}
-	entities.PreloadPlayer()
+	for _, file := range files {
+		data, err := assets.Asset(file)
+		if err != nil {
+			log.Fatalf("Unable to locate asset with URL: %v\n", file)
+		}
+		err = engo.Files.LoadReaderData(file, bytes.NewReader(data))
+		if err != nil {
+			log.Fatalf("Unable to load asset with URL: %v\n At %v", file, g.Type())
+		}
+	}
 }
 
 // Setup is called before the main loop.

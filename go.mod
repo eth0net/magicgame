@@ -6,6 +6,7 @@ require (
 	github.com/EngoEngine/ecs v1.0.5
 	github.com/EngoEngine/engo v1.0.5
 	github.com/davecgh/go-spew v1.1.1 // indirect
+	github.com/go-bindata/go-bindata v3.1.2+incompatible
 	github.com/go-gl/glfw/v3.3/glfw v0.0.0-20201108214237-06ea97f0c265 // indirect
 	github.com/go-gl/mathgl v1.0.0 // indirect
 	github.com/hajimehoshi/go-mp3 v0.3.1 // indirect
@@ -16,6 +17,7 @@ require (
 	github.com/vulkan-go/vulkan v0.0.0-20201213112254-a536091a798a // indirect
 	golang.org/x/exp v0.0.0-20210201131500-d352d2db2ceb // indirect
 	golang.org/x/image v0.0.0-20201208152932-35266b937fa6 // indirect
+	golang.org/x/mobile v0.0.0-20210208171126-f462b3930c8f // indirect
 	golang.org/x/net v0.0.0-20210119194325-5f4716e94777 // indirect
 	golang.org/x/sys v0.0.0-20210124154548-22da62e12c0c // indirect
 	golang.org/x/text v0.3.5 // indirect

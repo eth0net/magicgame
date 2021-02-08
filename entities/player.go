@@ -2,7 +2,6 @@ package entities
 
 import (
 	"github.com/EngoEngine/ecs"
-	"github.com/EngoEngine/engo"
 	"github.com/EngoEngine/engo/common"
 	"github.com/raziel2244/magicgame/systems"
 )
@@ -37,12 +36,6 @@ type Player struct {
 	systems.CharacterComponent
 	systems.ControlComponent
 	systems.SpeedComponent
-}
-
-// PreloadPlayer preloads the assets required for Player entities.
-// Call it in Scene.Preload.
-func PreloadPlayer() error {
-	return engo.Files.Load(spritesheetURL)
 }
 
 // NewPlayerOptions provides control
