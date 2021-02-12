@@ -14,7 +14,8 @@ import (
 )
 
 const (
-	tilemapURL string = "tilemaps/fantasy1-min.tmx"
+	spritesheetURL string = "spritesheets/player.png"
+	tilemapURL     string = "tilemaps/fantasy1-min.tmx"
 )
 
 var (
@@ -78,14 +79,16 @@ func (g *GameScene) Setup(u engo.Updater) {
 	common.CameraBounds = tilemap.Level.Bounds()
 	speedSystem.Level = tilemap.Level
 
-	player, err := entities.NewPlayer()
+	player, err := entities.NewPlayer(entities.NewPlayerOptions{
+		Position:       engo.Point{X: 800, Y: 600},
+		SpritesheetURL: spritesheetURL,
+		CellWidth:      32,
+		CellHeight:     32,
+		AnimationRate:  0.1,
+		StartZIndex:    3,
+	})
 	if err != nil {
 		log.Printf("Failed to create Player entity, error: %s\n", err)
-	}
-	player.SpaceComponent.Position = engo.Point{X: 800, Y: 600}
-	player.ControlComponent = systems.ControlComponent{
-		Vertical:   systems.AxisVertical,
-		Horizontal: systems.AxisHorizontal,
 	}
 
 	entityScroller := &common.EntityScroller{

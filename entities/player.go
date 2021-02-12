@@ -1,18 +1,12 @@
 package entities
 
 import (
+	"fmt"
+
 	"github.com/EngoEngine/ecs"
+	"github.com/EngoEngine/engo"
 	"github.com/EngoEngine/engo/common"
 	"github.com/raziel2244/magicgame/systems"
-)
-
-const (
-	spritesheetURL string = "spritesheets/player.png"
-
-	cellWidth  int = 32
-	cellHeight int = 32
-
-	animationRate float32 = 0.1
 )
 
 // PlayerAnimations contains animations for Player.
@@ -40,31 +34,41 @@ type Player struct {
 
 // NewPlayerOptions provides control
 // options when calling NewPlayer.
-// type NewPlayerOptions struct {
-// 	Position              engo.Point
-// 	SpritesheetURL        string
-// 	CellWidth, CellHeight int
-// 	StartZIndex           float32
-// }
+type NewPlayerOptions struct {
+	Position              engo.Point
+	SpritesheetURL        string
+	CellWidth, CellHeight int
+	AnimationRate         float32
+	StartZIndex           float32
+}
 
 // NewPlayer constructs a new Player entity and
 // returns it along with any errors encountered.
-func NewPlayer() (p *Player, err error) {
+func NewPlayer(o NewPlayerOptions) (p *Player, err error) {
 	spritesheet := common.NewSpritesheetFromFile(
-		spritesheetURL, cellWidth, cellHeight,
+		o.SpritesheetURL, o.CellWidth, o.CellHeight,
 	)
+	if spritesheet == nil {
+		err = fmt.Errorf("Failed to load spritesheet with url %v", o.SpritesheetURL)
+		return p, err
+	}
 
 	p = &Player{BasicEntity: ecs.NewBasic()}
 	p.AnimationComponent = common.NewAnimationComponent(
-		spritesheet.Drawables(), animationRate,
+		spritesheet.Drawables(), o.AnimationRate,
 	)
 	p.SpaceComponent = common.SpaceComponent{
-		Width:  float32(cellWidth),
-		Height: float32(cellHeight),
+		Position: o.Position,
+		Width:    float32(o.CellWidth),
+		Height:   float32(o.CellHeight),
 	}
 	p.RenderComponent = common.RenderComponent{
 		Drawable:    spritesheet.Drawable(1),
-		StartZIndex: 20,
+		StartZIndex: o.StartZIndex,
+	}
+	p.ControlComponent = systems.ControlComponent{
+		Vertical:   systems.AxisVertical,
+		Horizontal: systems.AxisHorizontal,
 	}
 	p.AnimationComponent.AddAnimations(PlayerAnimations)
 	p.AnimationComponent.AddDefaultAnimation(PlayerAnimations[5])
