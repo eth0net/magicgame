@@ -6,10 +6,11 @@ import (
 )
 
 var (
-	upButton    string = "up"
-	downButton  string = "down"
-	leftButton  string = "left"
-	rightButton string = "right"
+	upButton     string = "up"
+	downButton   string = "down"
+	leftButton   string = "left"
+	rightButton  string = "right"
+	sprintButton string = "sprint"
 )
 
 // ControlComponent stores control input for player entity.

@@ -10,7 +10,7 @@ import (
 const (
 	AxisVertical   string  = "vertical"
 	AxisHorizontal string  = "horiztonal"
-	speedScale     float32 = 6400
+	speedScale     float32 = 7200
 )
 
 // SpeedMessageType is the unique type identifier for SpeedMessage.
@@ -55,6 +55,7 @@ func (ss *SpeedSystem) New(*ecs.World) {
 	engo.Input.RegisterButton(downButton, engo.KeyS, engo.KeyArrowDown)
 	engo.Input.RegisterButton(leftButton, engo.KeyA, engo.KeyArrowLeft)
 	engo.Input.RegisterButton(rightButton, engo.KeyD, engo.KeyArrowRight)
+	engo.Input.RegisterButton(sprintButton, engo.KeyLeftShift)
 
 	engo.Input.RegisterAxis(
 		AxisVertical,
@@ -121,8 +122,14 @@ func (ss *SpeedSystem) Remove(b ecs.BasicEntity) {
 
 // Update the SpeedSystem this frame.
 func (ss *SpeedSystem) Update(dt float32) {
-	speedX := speedScale * dt * engo.GetGlobalScale().X
-	speedY := speedScale * dt * engo.GetGlobalScale().Y
+	speedX := speedScale * dt
+	speedY := speedScale * dt
+
+	if engo.Input.Button(sprintButton).Down() {
+		speedX *= 2
+		speedY *= 2
+	}
+
 	for _, e := range ss.entities {
 		e.Position.X = e.Position.X + speedX*e.SpeedComponent.X
 		e.Position.Y = e.Position.Y + speedY*e.SpeedComponent.Y
