@@ -19,11 +19,11 @@ const (
 )
 
 var (
-	renderSystem = &common.RenderSystem{}
-	renderable   *common.Renderable
-
 	animationSystem = &common.AnimationSystem{}
 	animationable   *common.Animationable
+
+	renderSystem = &common.RenderSystem{}
+	renderable   *common.Renderable
 
 	characterSystem = &systems.CharacterSystem{}
 	characterable   *systems.Characterable
@@ -56,7 +56,7 @@ func (g *GameScene) Preload() {
 		"tilemaps/fantasy1-min.tmx",
 	}
 	for _, file := range files {
-		data, err := assets.Asset(file)
+		data, err := assets.ReadFile(file)
 		if err != nil {
 			log.Fatalf("Unable to locate asset with URL: %v\n", file)
 		}

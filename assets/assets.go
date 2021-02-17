@@ -1,9 +1,13 @@
 package assets
 
-import (
-	// go-bindata required for code generation
-	_ "github.com/go-bindata/go-bindata"
-)
+import "embed"
 
-//go:generate go-bindata -pkg=assets ./...
-//go:generate gofmt -s -w .
+//go:embed spritesheets
+//go:embed tilemaps/*min.tmx
+//go:embed tilesets/*.png
+var fs embed.FS
+
+// ReadFile wrapper for embedded assets fs.
+func ReadFile(name string) ([]byte, error) {
+	return fs.ReadFile(name)
+}
