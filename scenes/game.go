@@ -79,7 +79,6 @@ func (g *GameScene) Setup(u engo.Updater) {
 			tilemapURL, err,
 		)
 	}
-	common.CameraBounds = tilemap.Level.Bounds()
 	speedSystem.Level = tilemap.Level
 
 	player, err := entities.NewPlayer(entities.NewPlayerOptions{
@@ -111,6 +110,18 @@ func (g *GameScene) Setup(u engo.Updater) {
 
 	tilemap.AddTilesToWorld(g.World)
 	g.World.AddEntity(player)
+
+	engo.Mailbox.Listen("WindowResizeMessage", func(msg engo.Message) {
+		offsetX, offsetY := engo.GameWidth()/2, engo.GameHeight()/2
+		scaleX, scaleY := engo.GetGlobalScale().X, engo.GetGlobalScale().Y
+
+		bounds := tilemap.Level.Bounds()
+		bounds.Min.X += offsetX / scaleX
+		bounds.Min.Y += offsetY / scaleY
+		bounds.Max.X -= offsetX / scaleX
+		bounds.Max.Y -= offsetY / scaleY
+		common.CameraBounds = bounds
+	})
 }
 
 // Type returns a unique string representation of GameScene.
