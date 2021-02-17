@@ -25,6 +25,7 @@ var PlayerAnimations = []*common.Animation{
 type Player struct {
 	ecs.BasicEntity
 	common.AnimationComponent
+	common.CollisionComponent
 	common.RenderComponent
 	common.SpaceComponent
 	systems.CharacterComponent
@@ -57,6 +58,8 @@ func NewPlayer(o NewPlayerOptions) (p *Player, err error) {
 	p.AnimationComponent = common.NewAnimationComponent(
 		spritesheet.Drawables(), o.AnimationRate,
 	)
+	p.CollisionComponent.Main = 1
+	p.CollisionComponent.Group = 1
 	p.SpaceComponent = common.SpaceComponent{
 		Position: o.Position,
 		Width:    float32(o.CellWidth),

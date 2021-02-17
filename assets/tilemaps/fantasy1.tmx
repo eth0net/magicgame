@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="50" height="50" tilewidth="32" tileheight="32" infinite="0" nextlayerid="13" nextobjectid="4">
+<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="50" height="50" tilewidth="32" tileheight="32" infinite="0" nextlayerid="18" nextobjectid="29">
  <editorsettings>
   <export target="fantasy1-min.tmx" format="tmx"/>
  </editorsettings>
@@ -19,7 +19,38 @@
  </layer>
  <layer id="11" name="Trees" width="50" height="50">
   <data encoding="base64" compression="zlib">
-   eJzt0TEKgDAUBNH/c/+LaqcnMBY2QTuLWZiBsGKV8HpUjXk6fAl3+GOf77Orjs7b1WOf/9La+t0jLT1Y6cFKD1Z6sNKDlR6s9GClBys9WOnBSg9WerDSg5UerPRgpQcrPVjpwUoPVnqw0oPVl8f9vrRdPdKXcIc/9gLmWKzz
+   eJztxUENADAIBLDDv9qhABmMpP004Uddyat7AwAAAAAAAAAAbBngCSuU
   </data>
  </layer>
+ <layer id="14" name="Trees Upper" width="50" height="50">
+  <data encoding="base64" compression="zlib">
+   eJzt0TEKgDAUBNFs7n9R7fQEamETsRACzocZkLX84aW31s8vxZdww4y9/6s2eqz5+6LvLXl67AXfsUUPUnqw0oOVHqz0YKUHKz1Y6cFKD1Z6sNKDlR6s9GClBys9WOnBSg9WerDSg5UerPRg9eZxva/ajh7Vl3DDjD0ALV+BYA==
+  </data>
+ </layer>
+ <objectgroup id="13" name="Collision">
+  <properties>
+   <property name="Collision" type="bool" value="true"/>
+  </properties>
+  <object id="17" name="Top" x="0" y="0">
+   <polygon points="32,64 1568,64 1568,86 32,86"/>
+  </object>
+  <object id="19" name="Left" x="0" y="64">
+   <polygon points="67.5,0 32,0 32,1504 67.5,1504"/>
+  </object>
+  <object id="20" name="Right" x="1536" y="64">
+   <polygon points="-3.5,0 32,0 32,1504 -3.5,1504"/>
+  </object>
+  <object id="21" name="Bottom" x="0" y="1536">
+   <polygon points="64,0 1536,0 1536,32 64,32"/>
+  </object>
+  <object id="26" name="Water1" x="768" y="640">
+   <polygon points="0,0 96,0 96,288 0,288"/>
+  </object>
+  <object id="27" name="Water2" x="704" y="672">
+   <polygon points="0,0 224,0 224,224 0,224"/>
+  </object>
+  <object id="28" name="Water3" x="672" y="736">
+   <polygon points="0,0 288,0 288,96 0,96"/>
+  </object>
+ </objectgroup>
 </map>

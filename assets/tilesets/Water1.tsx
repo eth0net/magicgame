@@ -5,9 +5,6 @@
   <terrain name="Water" tile="70"/>
  </terraintypes>
  <tile id="0">
-  <properties>
-   <property name="Collision" type="bool" value="true"/>
-  </properties>
   <animation>
    <frame tileid="0" duration="125"/>
    <frame tileid="8" duration="125"/>
@@ -20,9 +17,6 @@
   </animation>
  </tile>
  <tile id="1">
-  <properties>
-   <property name="Collision" type="bool" value="true"/>
-  </properties>
   <animation>
    <frame tileid="1" duration="125"/>
    <frame tileid="9" duration="125"/>
@@ -35,9 +29,6 @@
   </animation>
  </tile>
  <tile id="2">
-  <properties>
-   <property name="Collision" type="bool" value="true"/>
-  </properties>
   <animation>
    <frame tileid="2" duration="125"/>
    <frame tileid="10" duration="125"/>
@@ -50,9 +41,6 @@
   </animation>
  </tile>
  <tile id="3">
-  <properties>
-   <property name="Collision" type="bool" value="true"/>
-  </properties>
   <animation>
    <frame tileid="3" duration="125"/>
    <frame tileid="11" duration="125"/>
@@ -65,9 +53,6 @@
   </animation>
  </tile>
  <tile id="4">
-  <properties>
-   <property name="Collision" type="bool" value="true"/>
-  </properties>
   <animation>
    <frame tileid="4" duration="125"/>
    <frame tileid="12" duration="125"/>
@@ -80,9 +65,6 @@
   </animation>
  </tile>
  <tile id="5" terrain=",,,0">
-  <properties>
-   <property name="Collision" type="bool" value="true"/>
-  </properties>
   <animation>
    <frame tileid="5" duration="125"/>
    <frame tileid="13" duration="125"/>
@@ -95,9 +77,6 @@
   </animation>
  </tile>
  <tile id="6" terrain=",,0,0">
-  <properties>
-   <property name="Collision" type="bool" value="true"/>
-  </properties>
   <animation>
    <frame tileid="6" duration="125"/>
    <frame tileid="14" duration="125"/>
@@ -110,9 +89,6 @@
   </animation>
  </tile>
  <tile id="7" terrain=",,0,">
-  <properties>
-   <property name="Collision" type="bool" value="true"/>
-  </properties>
   <animation>
    <frame tileid="7" duration="125"/>
    <frame tileid="15" duration="125"/>
@@ -125,9 +101,11 @@
   </animation>
  </tile>
  <tile id="64">
-  <properties>
-   <property name="Collision" type="bool" value="true"/>
-  </properties>
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="3.94737" y="31.9737">
+    <polyline points="0,0 -1.84211,-4.47368 -1.84211,-20.7895 2.76316,-28.1579 8.68421,-30.3947 13.8158,-30.6579 17.8947,-28.9474 28.2895,-29.3421"/>
+   </object>
+  </objectgroup>
   <animation>
    <frame tileid="64" duration="125"/>
    <frame tileid="72" duration="125"/>
@@ -140,9 +118,11 @@
   </animation>
  </tile>
  <tile id="65">
-  <properties>
-   <property name="Collision" type="bool" value="true"/>
-  </properties>
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0.125" y="2.875">
+    <polyline points="0,0 4.9375,-0.75 18.625,-0.9375 23.9375,0.6875 27.375,3.4375 29.5625,7.8125 30,13.125 30.125,25.875 29.25,29.3125"/>
+   </object>
+  </objectgroup>
   <animation>
    <frame tileid="65" duration="125"/>
    <frame tileid="73" duration="125"/>
@@ -155,9 +135,6 @@
   </animation>
  </tile>
  <tile id="66">
-  <properties>
-   <property name="Collision" type="bool" value="true"/>
-  </properties>
   <animation>
    <frame tileid="66" duration="125"/>
    <frame tileid="74" duration="125"/>
@@ -170,9 +147,6 @@
   </animation>
  </tile>
  <tile id="67">
-  <properties>
-   <property name="Collision" type="bool" value="true"/>
-  </properties>
   <animation>
    <frame tileid="67" duration="125"/>
    <frame tileid="75" duration="125"/>
@@ -185,9 +159,6 @@
   </animation>
  </tile>
  <tile id="68">
-  <properties>
-   <property name="Collision" type="bool" value="true"/>
-  </properties>
   <animation>
    <frame tileid="68" duration="125"/>
    <frame tileid="76" duration="125"/>
@@ -200,9 +171,6 @@
   </animation>
  </tile>
  <tile id="69" terrain=",0,,0">
-  <properties>
-   <property name="Collision" type="bool" value="true"/>
-  </properties>
   <animation>
    <frame tileid="69" duration="125"/>
    <frame tileid="77" duration="125"/>
@@ -215,9 +183,6 @@
   </animation>
  </tile>
  <tile id="70" terrain="0,0,0,0">
-  <properties>
-   <property name="Collision" type="bool" value="true"/>
-  </properties>
   <animation>
    <frame tileid="70" duration="125"/>
    <frame tileid="78" duration="125"/>
@@ -230,9 +195,6 @@
   </animation>
  </tile>
  <tile id="71" terrain="0,,0,">
-  <properties>
-   <property name="Collision" type="bool" value="true"/>
-  </properties>
   <animation>
    <frame tileid="71" duration="125"/>
    <frame tileid="79" duration="125"/>
@@ -245,9 +207,11 @@
   </animation>
  </tile>
  <tile id="128">
-  <properties>
-   <property name="Collision" type="bool" value="true"/>
-  </properties>
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="3.1875" y="0.0625">
+    <polyline points="0,0 -1,1 -2,7.1875 -0.75,9.8125 -0.1875,12.8125 -1.1875,15.75 -1.6875,19 -0.75,21.875 1,25.3125 3.625,27.875 7.375,29.375 10.8125,30.25 25.25,30 28.6875,28.625"/>
+   </object>
+  </objectgroup>
   <animation>
    <frame tileid="128" duration="125"/>
    <frame tileid="136" duration="125"/>
@@ -260,9 +224,11 @@
   </animation>
  </tile>
  <tile id="129">
-  <properties>
-   <property name="Collision" type="bool" value="true"/>
-  </properties>
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="29.25" y="0.0625">
+    <polyline points="0,0 1.1875,3 1.125,9.1875 -0.75,12.3125 -0.875,15.625 1.25,15.9375 1.125,20.75 -0.3125,24.25 -3.125,27 -7.75,29 -11.3125,30.4375 -25.1875,30 -27.125,29.3125 -29.125,29"/>
+   </object>
+  </objectgroup>
   <animation>
    <frame tileid="129" duration="125"/>
    <frame tileid="137" duration="125"/>
@@ -275,9 +241,6 @@
   </animation>
  </tile>
  <tile id="130">
-  <properties>
-   <property name="Collision" type="bool" value="true"/>
-  </properties>
   <animation>
    <frame tileid="130" duration="125"/>
    <frame tileid="138" duration="125"/>
@@ -290,9 +253,6 @@
   </animation>
  </tile>
  <tile id="131">
-  <properties>
-   <property name="Collision" type="bool" value="true"/>
-  </properties>
   <animation>
    <frame tileid="131" duration="125"/>
    <frame tileid="139" duration="125"/>
@@ -305,9 +265,6 @@
   </animation>
  </tile>
  <tile id="132">
-  <properties>
-   <property name="Collision" type="bool" value="true"/>
-  </properties>
   <animation>
    <frame tileid="132" duration="125"/>
    <frame tileid="140" duration="125"/>
@@ -320,9 +277,6 @@
   </animation>
  </tile>
  <tile id="133" terrain=",0,,">
-  <properties>
-   <property name="Collision" type="bool" value="true"/>
-  </properties>
   <animation>
    <frame tileid="133" duration="125"/>
    <frame tileid="141" duration="125"/>
@@ -335,9 +289,6 @@
   </animation>
  </tile>
  <tile id="134" terrain="0,0,,">
-  <properties>
-   <property name="Collision" type="bool" value="true"/>
-  </properties>
   <animation>
    <frame tileid="134" duration="125"/>
    <frame tileid="142" duration="125"/>
@@ -350,9 +301,6 @@
   </animation>
  </tile>
  <tile id="135" terrain="0,,,">
-  <properties>
-   <property name="Collision" type="bool" value="true"/>
-  </properties>
   <animation>
    <frame tileid="135" duration="125"/>
    <frame tileid="143" duration="125"/>
@@ -365,9 +313,6 @@
   </animation>
  </tile>
  <tile id="192">
-  <properties>
-   <property name="Collision" type="bool" value="true"/>
-  </properties>
   <animation>
    <frame tileid="192" duration="125"/>
    <frame tileid="200" duration="125"/>
@@ -380,9 +325,6 @@
   </animation>
  </tile>
  <tile id="193">
-  <properties>
-   <property name="Collision" type="bool" value="true"/>
-  </properties>
   <animation>
    <frame tileid="193" duration="125"/>
    <frame tileid="201" duration="125"/>
@@ -395,9 +337,6 @@
   </animation>
  </tile>
  <tile id="194">
-  <properties>
-   <property name="Collision" type="bool" value="true"/>
-  </properties>
   <animation>
    <frame tileid="194" duration="125"/>
    <frame tileid="202" duration="125"/>
@@ -410,9 +349,6 @@
   </animation>
  </tile>
  <tile id="195">
-  <properties>
-   <property name="Collision" type="bool" value="true"/>
-  </properties>
   <animation>
    <frame tileid="195" duration="125"/>
    <frame tileid="203" duration="125"/>
@@ -425,9 +361,6 @@
   </animation>
  </tile>
  <tile id="196" terrain="0,0,0,">
-  <properties>
-   <property name="Collision" type="bool" value="true"/>
-  </properties>
   <animation>
    <frame tileid="196" duration="125"/>
    <frame tileid="204" duration="125"/>
@@ -440,9 +373,6 @@
   </animation>
  </tile>
  <tile id="197" terrain="0,0,,0">
-  <properties>
-   <property name="Collision" type="bool" value="true"/>
-  </properties>
   <animation>
    <frame tileid="197" duration="125"/>
    <frame tileid="205" duration="125"/>
@@ -455,9 +385,6 @@
   </animation>
  </tile>
  <tile id="198">
-  <properties>
-   <property name="Collision" type="bool" value="true"/>
-  </properties>
   <animation>
    <frame tileid="198" duration="125"/>
    <frame tileid="206" duration="125"/>
@@ -470,9 +397,6 @@
   </animation>
  </tile>
  <tile id="199">
-  <properties>
-   <property name="Collision" type="bool" value="true"/>
-  </properties>
   <animation>
    <frame tileid="199" duration="125"/>
    <frame tileid="207" duration="125"/>
@@ -485,9 +409,6 @@
   </animation>
  </tile>
  <tile id="256">
-  <properties>
-   <property name="Collision" type="bool" value="true"/>
-  </properties>
   <animation>
    <frame tileid="256" duration="125"/>
    <frame tileid="264" duration="125"/>
@@ -500,9 +421,6 @@
   </animation>
  </tile>
  <tile id="257">
-  <properties>
-   <property name="Collision" type="bool" value="true"/>
-  </properties>
   <animation>
    <frame tileid="257" duration="125"/>
    <frame tileid="265" duration="125"/>
@@ -515,9 +433,6 @@
   </animation>
  </tile>
  <tile id="258">
-  <properties>
-   <property name="Collision" type="bool" value="true"/>
-  </properties>
   <animation>
    <frame tileid="258" duration="125"/>
    <frame tileid="266" duration="125"/>
@@ -530,9 +445,6 @@
   </animation>
  </tile>
  <tile id="259">
-  <properties>
-   <property name="Collision" type="bool" value="true"/>
-  </properties>
   <animation>
    <frame tileid="259" duration="125"/>
    <frame tileid="267" duration="125"/>
@@ -545,9 +457,6 @@
   </animation>
  </tile>
  <tile id="260" terrain="0,,0,0">
-  <properties>
-   <property name="Collision" type="bool" value="true"/>
-  </properties>
   <animation>
    <frame tileid="260" duration="125"/>
    <frame tileid="268" duration="125"/>
@@ -560,9 +469,6 @@
   </animation>
  </tile>
  <tile id="261" terrain=",0,0,0">
-  <properties>
-   <property name="Collision" type="bool" value="true"/>
-  </properties>
   <animation>
    <frame tileid="261" duration="125"/>
    <frame tileid="269" duration="125"/>
@@ -575,9 +481,6 @@
   </animation>
  </tile>
  <tile id="262">
-  <properties>
-   <property name="Collision" type="bool" value="true"/>
-  </properties>
   <animation>
    <frame tileid="262" duration="125"/>
    <frame tileid="270" duration="125"/>
@@ -590,9 +493,6 @@
   </animation>
  </tile>
  <tile id="263">
-  <properties>
-   <property name="Collision" type="bool" value="true"/>
-  </properties>
   <animation>
    <frame tileid="263" duration="125"/>
    <frame tileid="271" duration="125"/>
@@ -605,9 +505,6 @@
   </animation>
  </tile>
  <tile id="320">
-  <properties>
-   <property name="Collision" type="bool" value="true"/>
-  </properties>
   <animation>
    <frame tileid="320" duration="125"/>
    <frame tileid="328" duration="125"/>
@@ -620,9 +517,6 @@
   </animation>
  </tile>
  <tile id="321">
-  <properties>
-   <property name="Collision" type="bool" value="true"/>
-  </properties>
   <animation>
    <frame tileid="321" duration="125"/>
    <frame tileid="329" duration="125"/>
@@ -635,9 +529,6 @@
   </animation>
  </tile>
  <tile id="322">
-  <properties>
-   <property name="Collision" type="bool" value="true"/>
-  </properties>
   <animation>
    <frame tileid="322" duration="125"/>
    <frame tileid="330" duration="125"/>
@@ -650,9 +541,6 @@
   </animation>
  </tile>
  <tile id="323">
-  <properties>
-   <property name="Collision" type="bool" value="true"/>
-  </properties>
   <animation>
    <frame tileid="323" duration="125"/>
    <frame tileid="331" duration="125"/>
@@ -665,9 +553,6 @@
   </animation>
  </tile>
  <tile id="324">
-  <properties>
-   <property name="Collision" type="bool" value="true"/>
-  </properties>
   <animation>
    <frame tileid="324" duration="125"/>
    <frame tileid="332" duration="125"/>
@@ -680,9 +565,6 @@
   </animation>
  </tile>
  <tile id="325">
-  <properties>
-   <property name="Collision" type="bool" value="true"/>
-  </properties>
   <animation>
    <frame tileid="325" duration="125"/>
    <frame tileid="333" duration="125"/>
@@ -695,9 +577,6 @@
   </animation>
  </tile>
  <tile id="326">
-  <properties>
-   <property name="Collision" type="bool" value="true"/>
-  </properties>
   <animation>
    <frame tileid="326" duration="125"/>
    <frame tileid="334" duration="125"/>

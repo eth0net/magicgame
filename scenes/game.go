@@ -22,6 +22,9 @@ var (
 	animationSystem = &common.AnimationSystem{}
 	animationable   *common.Animationable
 
+	collisionSystem = &common.CollisionSystem{Solids: 1}
+	collisionable   *common.Collisionable
+
 	renderSystem = &common.RenderSystem{}
 	renderable   *common.Renderable
 
@@ -100,8 +103,9 @@ func (g *GameScene) Setup(u engo.Updater) {
 
 	g.World.AddSystemInterface(renderSystem, renderable, nil)
 	g.World.AddSystemInterface(animationSystem, animationable, nil)
-	g.World.AddSystemInterface(controlSystem, controlable, nil)
+	g.World.AddSystemInterface(collisionSystem, collisionable, nil)
 	g.World.AddSystemInterface(characterSystem, characterable, nil)
+	g.World.AddSystemInterface(controlSystem, controlable, nil)
 	g.World.AddSystemInterface(speedSystem, speedable, nil)
 	g.World.AddSystem(entityScroller)
 
