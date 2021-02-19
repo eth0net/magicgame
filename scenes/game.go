@@ -8,13 +8,12 @@ import (
 	"github.com/EngoEngine/engo"
 	"github.com/EngoEngine/engo/common"
 	"github.com/raziel2244/magicgame/assets"
-	"github.com/raziel2244/magicgame/entities"
 	"github.com/raziel2244/magicgame/systems"
 	"github.com/raziel2244/magicgame/util"
 )
 
 const (
-	spritesheetURL string = "spritesheets/player.png"
+	spritesheetURL string = "spritesheets/Male 18-1.png"
 	tilemapURL     string = "tilemaps/fantasy1-min.tmx"
 )
 
@@ -50,7 +49,7 @@ type GameScene struct {
 // Preload is called before loading resources.
 func (g *GameScene) Preload() {
 	files := []string{
-		"spritesheets/player.png",
+		"spritesheets/Male 18-1.png",
 		"tilesets/BaseChip.png",
 		"tilesets/Dirt1.png",
 		"tilesets/Grass1-Dirt1.png",
@@ -81,7 +80,7 @@ func (g *GameScene) Setup(u engo.Updater) {
 	}
 	speedSystem.Level = tilemap.Level
 
-	player, err := entities.NewPlayer(entities.NewPlayerOptions{
+	player, err := systems.NewCharacter(systems.NewCharacterOptions{
 		Position:       engo.Point{X: 800, Y: 600},
 		SpritesheetURL: spritesheetURL,
 		CellWidth:      32,
@@ -92,6 +91,7 @@ func (g *GameScene) Setup(u engo.Updater) {
 	if err != nil {
 		log.Printf("Failed to create Player entity, error: %s\n", err)
 	}
+	player.CollisionComponent.Main = 1
 
 	entityScroller := &common.EntityScroller{
 		SpaceComponent: &player.SpaceComponent,
