@@ -50,6 +50,7 @@ type GameScene struct {
 func (g *GameScene) Preload() {
 	files := []string{
 		"spritesheets/Male 18-1.png",
+		"spritesheets/Female 24-1.png",
 		"tilesets/BaseChip.png",
 		"tilesets/Dirt1.png",
 		"tilesets/Grass1-Dirt1.png",
@@ -92,6 +93,19 @@ func (g *GameScene) Setup(u engo.Updater) {
 		log.Printf("Failed to create Player entity, error: %s\n", err)
 	}
 	player.CollisionComponent.Main = 1
+	player.ControlComponent.Enabled = true
+
+	npc, err := systems.NewCharacter(systems.NewCharacterOptions{
+		Position:       engo.Point{X: 800, Y: 928},
+		SpritesheetURL: "spritesheets/Female 24-1.png",
+		CellWidth:      32,
+		CellHeight:     32,
+		AnimationRate:  0.1,
+		StartZIndex:    3,
+	})
+	if err != nil {
+		log.Printf("Failed to create NPC entity, error: %s\n", err)
+	}
 
 	entityScroller := &common.EntityScroller{
 		SpaceComponent: &player.SpaceComponent,
@@ -110,6 +124,7 @@ func (g *GameScene) Setup(u engo.Updater) {
 
 	tilemap.AddTilesToWorld(g.World)
 	g.World.AddEntity(player)
+	g.World.AddEntity(npc)
 
 	engo.Mailbox.Listen("WindowResizeMessage", func(msg engo.Message) {
 		offsetX, offsetY := engo.GameWidth()/2, engo.GameHeight()/2

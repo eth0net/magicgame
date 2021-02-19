@@ -16,6 +16,7 @@ var (
 // ControlComponent stores control input for player entity.
 type ControlComponent struct {
 	Vertical, Horizontal string
+	Enabled              bool
 }
 
 // GetControlComponent provides type safe access to ControlComponent.
@@ -122,6 +123,9 @@ func (cs *ControlSystem) Remove(b ecs.BasicEntity) {
 // Update the ControlSystem this frame.
 func (cs *ControlSystem) Update(dt float32) {
 	for _, e := range cs.entities {
+		if !e.ControlComponent.Enabled {
+			continue
+		}
 		if vector, changed := e.speed(); changed {
 			vector, _ = vector.Normalize()
 			vector.MultiplyScalar(dt)
