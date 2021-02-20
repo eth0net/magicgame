@@ -8,7 +8,9 @@ import (
 	"github.com/EngoEngine/engo"
 	"github.com/EngoEngine/engo/common"
 	"github.com/raziel2244/magicgame/assets"
-	"github.com/raziel2244/magicgame/systems"
+	"github.com/raziel2244/magicgame/systems/character"
+	"github.com/raziel2244/magicgame/systems/control"
+	"github.com/raziel2244/magicgame/systems/speed"
 	"github.com/raziel2244/magicgame/util"
 )
 
@@ -27,14 +29,14 @@ var (
 	renderSystem = &common.RenderSystem{}
 	renderable   *common.Renderable
 
-	characterSystem = &systems.CharacterSystem{}
-	characterable   *systems.Characterable
+	characterSystem = &character.CharacterSystem{}
+	characterable   *character.Characterable
 
-	controlSystem = &systems.ControlSystem{}
-	controlable   *systems.Controlable
+	controlSystem = &control.ControlSystem{}
+	controlable   *control.Controlable
 
-	speedSystem = &systems.SpeedSystem{}
-	speedable   *systems.Speedable
+	speedSystem = &speed.SpeedSystem{}
+	speedable   *speed.Speedable
 )
 
 // GameSceneType is the unique type identifier for GameScene.
@@ -81,7 +83,7 @@ func (g *GameScene) Setup(u engo.Updater) {
 	}
 	speedSystem.Level = tilemap.Level
 
-	player, err := systems.NewCharacter(systems.NewCharacterOptions{
+	player, err := character.NewCharacter(character.NewCharacterOptions{
 		Position:       engo.Point{X: 800, Y: 600},
 		SpritesheetURL: spritesheetURL,
 		CellWidth:      32,
@@ -95,7 +97,7 @@ func (g *GameScene) Setup(u engo.Updater) {
 	player.CollisionComponent.Main = 1
 	player.ControlComponent.Enabled = true
 
-	npc, err := systems.NewCharacter(systems.NewCharacterOptions{
+	npc, err := character.NewCharacter(character.NewCharacterOptions{
 		Position:       engo.Point{X: 800, Y: 928},
 		SpritesheetURL: "spritesheets/Female 24-1.png",
 		CellWidth:      32,
