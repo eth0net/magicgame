@@ -1,4 +1,4 @@
-package scenes
+package game
 
 import (
 	"bytes"
@@ -9,47 +9,17 @@ import (
 	"github.com/EngoEngine/engo/common"
 	"github.com/raziel2244/magicgame/assets"
 	"github.com/raziel2244/magicgame/systems/character"
-	"github.com/raziel2244/magicgame/systems/control"
-	"github.com/raziel2244/magicgame/systems/speed"
 	"github.com/raziel2244/magicgame/util"
 )
 
-const (
-	spritesheetURL string = "spritesheets/Male 18-1.png"
-	tilemapURL     string = "tilemaps/fantasy1-min.tmx"
-)
-
-var (
-	animationSystem = &common.AnimationSystem{}
-	animationable   *common.Animationable
-
-	collisionSystem = &common.CollisionSystem{Solids: 1}
-	collisionable   *common.Collisionable
-
-	renderSystem = &common.RenderSystem{}
-	renderable   *common.Renderable
-
-	characterSystem = &character.CharacterSystem{}
-	characterable   *character.Characterable
-
-	controlSystem = &control.ControlSystem{}
-	controlable   *control.Controlable
-
-	speedSystem = &speed.SpeedSystem{}
-	speedable   *speed.Speedable
-)
-
-// GameSceneType is the unique type identifier for GameScene.
-const GameSceneType string = "GameScene"
-
-// GameScene is a playable world scene in the game.
-type GameScene struct {
+// Scene is a playable world scene in the game.
+type Scene struct {
 	World   *ecs.World
 	Tilemap *util.Tilemap
 }
 
 // Preload is called before loading resources.
-func (g *GameScene) Preload() {
+func (g *Scene) Preload() {
 	files := []string{
 		"spritesheets/Male 18-1.png",
 		"spritesheets/Female 24-1.png",
@@ -73,7 +43,7 @@ func (g *GameScene) Preload() {
 }
 
 // Setup is called before the main loop.
-func (g *GameScene) Setup(u engo.Updater) {
+func (g *Scene) Setup(u engo.Updater) {
 	tilemap, err := util.NewTilemap(tilemapURL)
 	if err != nil {
 		log.Printf(
@@ -141,7 +111,7 @@ func (g *GameScene) Setup(u engo.Updater) {
 	})
 }
 
-// Type returns a unique string representation of GameScene.
-func (g *GameScene) Type() string {
-	return GameSceneType
+// Type returns a unique string representation of Scene.
+func (g *Scene) Type() string {
+	return SceneType
 }

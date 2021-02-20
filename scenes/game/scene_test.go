@@ -1,13 +1,13 @@
-package scenes
+package game
 
 import (
 	"testing"
 )
 
-var scene GameScene = GameScene{}
+var scene = Scene{}
 
 func TestGameScene_Type(t *testing.T) {
-	var want, got string = GameSceneType, scene.Type()
+	var want, got string = SceneType, scene.Type()
 	if want != got {
 		t.Errorf("want type == %v, got %v", want, got)
 	}
