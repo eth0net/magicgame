@@ -12,14 +12,14 @@ type controlEntity struct {
 
 func (ce *controlEntity) speed() (p engo.Point, changed bool) {
 	var (
-		upReleased    = engo.Input.Button(UpButton).JustReleased()
-		downReleased  = engo.Input.Button(DownButton).JustReleased()
-		leftReleased  = engo.Input.Button(LeftButton).JustReleased()
-		rightReleased = engo.Input.Button(RightButton).JustReleased()
-		upHeld        = engo.Input.Button(UpButton).Down()
-		downHeld      = engo.Input.Button(DownButton).Down()
-		leftHeld      = engo.Input.Button(LeftButton).Down()
-		rightHeld     = engo.Input.Button(RightButton).Down()
+		upReleased    = engo.Input.Button(ButtonUp).JustReleased()
+		downReleased  = engo.Input.Button(ButtonDown).JustReleased()
+		leftReleased  = engo.Input.Button(ButtonLeft).JustReleased()
+		rightReleased = engo.Input.Button(ButtonRight).JustReleased()
+		upHeld        = engo.Input.Button(ButtonUp).Down()
+		downHeld      = engo.Input.Button(ButtonDown).Down()
+		leftHeld      = engo.Input.Button(ButtonLeft).Down()
+		rightHeld     = engo.Input.Button(ButtonRight).Down()
 	)
 
 	oldX := engo.Input.Axis(ce.Horizontal).Value()

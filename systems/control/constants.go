@@ -8,9 +8,9 @@ const (
 
 // Buttons for control input.
 const (
-	UpButton     string = "up"
-	DownButton   string = "down"
-	LeftButton   string = "left"
-	RightButton  string = "right"
-	SprintButton string = "sprint"
+	ButtonUp     string = "up"
+	ButtonDown   string = "down"
+	ButtonLeft   string = "left"
+	ButtonRight  string = "right"
+	ButtonSprint string = "sprint"
 )

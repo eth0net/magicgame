@@ -13,11 +13,11 @@ type ControlSystem struct {
 
 // New initialises SpeedSystem when it's added to the world.
 func (ss *ControlSystem) New(*ecs.World) {
-	engo.Input.RegisterButton(UpButton, engo.KeyW, engo.KeyArrowUp)
-	engo.Input.RegisterButton(DownButton, engo.KeyS, engo.KeyArrowDown)
-	engo.Input.RegisterButton(LeftButton, engo.KeyA, engo.KeyArrowLeft)
-	engo.Input.RegisterButton(RightButton, engo.KeyD, engo.KeyArrowRight)
-	engo.Input.RegisterButton(SprintButton, engo.KeyLeftShift)
+	engo.Input.RegisterButton(ButtonUp, engo.KeyW, engo.KeyArrowUp)
+	engo.Input.RegisterButton(ButtonDown, engo.KeyS, engo.KeyArrowDown)
+	engo.Input.RegisterButton(ButtonLeft, engo.KeyA, engo.KeyArrowLeft)
+	engo.Input.RegisterButton(ButtonRight, engo.KeyD, engo.KeyArrowRight)
+	engo.Input.RegisterButton(ButtonSprint, engo.KeyLeftShift)
 
 	engo.Input.RegisterAxis(
 		AxisVertical,
@@ -76,7 +76,7 @@ func (cs *ControlSystem) Update(dt float32) {
 			vector, _ = vector.Normalize()
 			vector.MultiplyScalar(dt)
 
-			if engo.Input.Button(SprintButton).Down() {
+			if engo.Input.Button(ButtonSprint).Down() {
 				vector.MultiplyScalar(2)
 			}
 
