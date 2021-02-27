@@ -1,21 +1,6 @@
 package character
 
-// ActionType indicates the type of an Action.
-type ActionType int
-
-// Actions for NPCs.
-const (
-	ActStop ActionType = iota
-	ActWalk
-	ActRun
-)
-
-// An Action defines something an NPC does.
-type Action struct {
-	Type ActionType
-}
-
-// Schedule contains an Action list for NPCS to carry out.
+// A Schedule contains a list of Actions for Characters to perform.
 type Schedule struct {
 	Actions       []Action
 	currentAction int
