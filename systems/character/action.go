@@ -7,7 +7,7 @@ import (
 // ActionType indicates the type of an Action.
 type ActionType int
 
-// Actions for Character Schedules.
+// ActionTypes available for use in Character Schedules.
 const (
 	// ActStop stops Character movement and turns the
 	// Character to face the direction indicated by Target.
@@ -60,16 +60,19 @@ type Action struct {
 	// and how to interpret the other Action fields.
 	Type ActionType
 
-	// The Point sets a  for the Action, it is used in
-	// different ways for different ActionTypes.
-	//  - ActWalk uses Target as a direction.
-	//  - ActWalkTo uses Target as a destination.
+	// Point is the relevant engo.Point for the action.
+	// ActionTypes can use Point in different ways,
+	// refer to the ActionType for more information.
 	//
-	// When Target is a direction, the Action will be complete
-	// after one system update, unless Time is greater than 0.
+	// Examples:
+	//  - ActWalk uses Point as a direction.
+	//  - ActWalkTo uses Point as a destination.
 	//
-	// When Target is a destination, the Action will be complete
-	// when the Target is reached and Time has no effect.
+	// When Point is a direction, the Action will be complete
+	// after one system update, unless Duration is greater than 0.
+	//
+	// When Point is a destination, the Action will be complete
+	// when the Point is reached and Duration has no effect.
 	engo.Point
 
 	// Duration sets how long the Action should run for,
