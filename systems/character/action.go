@@ -18,11 +18,11 @@ const (
 	ActTurn
 
 	// ActWalk makes the Character walk in the direction
-	// indicated by Target until Time has passed.
+	// indicated by Target until Duration has passed.
 	ActWalk
 
 	// ActRun makes the Character run in the direction
-	// indicated by Target until Time has passed.
+	// indicated by Target until Duration has passed.
 	ActRun
 
 	// ActTurnTo turns the Character to face the location
@@ -72,8 +72,8 @@ type Action struct {
 	// when the Target is reached and Time has no effect.
 	engo.Point
 
-	// Time sets how long the Action should run for,
-	// if Time is 0 the Action runs until complete.
-	// Note that Time does not affect all ActionTypes.
-	Time float32
+	// Duration sets how long the Action should run for,
+	// if Duration is 0 the Action runs until complete.
+	// Note that Duration does not affect all ActionTypes.
+	Duration float32
 }
