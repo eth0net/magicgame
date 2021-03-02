@@ -12,7 +12,7 @@ func main() {
 		Height:                     600,
 		GlobalScale:                engo.Point{X: 2, Y: 2},
 		ApplicationMajorVersion:    0,
-		ApplicationMinorVersion:    3,
+		ApplicationMinorVersion:    4,
 		ApplicationRevisionVersion: 0,
 	}
 
