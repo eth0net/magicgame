@@ -7,9 +7,9 @@ import (
 	"github.com/EngoEngine/ecs"
 	"github.com/EngoEngine/engo"
 	"github.com/EngoEngine/engo/common"
-	"github.com/raziel2244/magicgame/assets"
-	"github.com/raziel2244/magicgame/systems/character"
-	"github.com/raziel2244/magicgame/util"
+	"github.com/eth0net/magicgame/assets"
+	"github.com/eth0net/magicgame/systems/character"
+	"github.com/eth0net/magicgame/util"
 )
 
 // Scene is a playable world scene in the game.

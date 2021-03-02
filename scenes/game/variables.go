@@ -2,9 +2,9 @@ package game
 
 import (
 	"github.com/EngoEngine/engo/common"
-	"github.com/raziel2244/magicgame/systems/character"
-	"github.com/raziel2244/magicgame/systems/control"
-	"github.com/raziel2244/magicgame/systems/speed"
+	"github.com/eth0net/magicgame/systems/character"
+	"github.com/eth0net/magicgame/systems/control"
+	"github.com/eth0net/magicgame/systems/speed"
 )
 
 // Systems for scene.

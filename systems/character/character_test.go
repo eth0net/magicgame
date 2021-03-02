@@ -5,7 +5,7 @@ import (
 	"testing"
 
 	"github.com/EngoEngine/engo/common"
-	"github.com/raziel2244/magicgame/systems/control"
+	"github.com/eth0net/magicgame/systems/control"
 )
 
 func TestNewCharacter(t *testing.T) {

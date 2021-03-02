@@ -6,7 +6,7 @@ import (
 
 	"github.com/EngoEngine/engo"
 	"github.com/EngoEngine/engo/common"
-	"github.com/raziel2244/magicgame/systems/speed"
+	"github.com/eth0net/magicgame/systems/speed"
 )
 
 func TestSetAnimation(t *testing.T) {

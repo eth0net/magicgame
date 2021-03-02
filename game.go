@@ -2,7 +2,7 @@ package main
 
 import (
 	"github.com/EngoEngine/engo"
-	"github.com/raziel2244/magicgame/scenes/game"
+	"github.com/eth0net/magicgame/scenes/game"
 )
 
 func main() {

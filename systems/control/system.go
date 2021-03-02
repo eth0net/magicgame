@@ -3,7 +3,7 @@ package control
 import (
 	"github.com/EngoEngine/ecs"
 	"github.com/EngoEngine/engo"
-	"github.com/raziel2244/magicgame/systems/speed"
+	"github.com/eth0net/magicgame/systems/speed"
 )
 
 // ControlSystem handles player input.

@@ -3,7 +3,7 @@ package character
 import (
 	"github.com/EngoEngine/ecs"
 	"github.com/EngoEngine/engo/common"
-	"github.com/raziel2244/magicgame/systems/speed"
+	"github.com/eth0net/magicgame/systems/speed"
 )
 
 // CharacterSystem handles character-specific operations.
