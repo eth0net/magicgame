@@ -60,3 +60,24 @@ func (ce *characterEntity) setAnimation() {
 		ce.SelectAnimationByName(newAnimationName)
 	}
 }
+
+// runSchedule executes code on the characterEntity
+// according to the current Action for the Schedule
+// and then updates the Schedule accordingly.
+func (ce *characterEntity) runSchedule(dt float32) {
+	action := ce.CurrentAction()
+	if action == nil {
+		return
+	}
+
+	switch action.Type {
+	case ActStop:
+		ce.SpeedComponent.Point = engo.Point{}
+		break
+	}
+
+	ce.currentDuration += dt
+	if ce.currentDuration >= action.Duration {
+		ce.StepAction()
+	}
+}
