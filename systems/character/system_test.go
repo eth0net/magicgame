@@ -16,6 +16,7 @@ func TestSystem(t *testing.T) {
 		system.Add(
 			&character.BasicEntity,
 			&character.AnimationComponent,
+			&character.SpaceComponent,
 			&character.CharacterComponent,
 			&character.SpeedComponent,
 		)

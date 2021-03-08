@@ -13,15 +13,18 @@ type CharacterSystem struct {
 
 // Add an entity to the CharacterSystem.
 func (cs *CharacterSystem) Add(
-	b *ecs.BasicEntity,
-	a *common.AnimationComponent,
-	c *CharacterComponent,
-	s *speed.SpeedComponent,
+	basic *ecs.BasicEntity,
+	anim *common.AnimationComponent,
+	space *common.SpaceComponent,
+	char *CharacterComponent,
+	speed *speed.SpeedComponent,
 ) {
 	if cs.entities == nil {
 		cs.entities = []characterEntity{}
 	}
-	cs.entities = append(cs.entities, characterEntity{b, a, c, s})
+	entity := characterEntity{basic, anim, space, char, speed}
+	cs.entities = append(cs.entities, entity)
+	char.Schedule.Actions = append(char.Schedule.Actions, Action{})
 }
 
 // AddByInterface adds entities to the system via Characterable interface.
@@ -30,6 +33,7 @@ func (cs *CharacterSystem) AddByInterface(i ecs.Identifier) {
 	cs.Add(
 		e.GetBasicEntity(),
 		e.GetAnimationComponent(),
+		e.GetSpaceComponent(),
 		e.GetCharacterComponent(),
 		e.GetSpeedComponent(),
 	)

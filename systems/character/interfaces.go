@@ -16,6 +16,7 @@ type CharacterFace interface {
 type Characterable interface {
 	ecs.BasicFace
 	common.AnimationFace
+	common.SpaceFace
 	CharacterFace
 	speed.SpeedFace
 }
