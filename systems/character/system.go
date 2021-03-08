@@ -56,6 +56,7 @@ func (cs *CharacterSystem) Remove(b ecs.BasicEntity) {
 // Update the CharacterSystem this frame.
 func (cs *CharacterSystem) Update(dt float32) {
 	for _, e := range cs.entities {
+		e.runSchedule(dt)
 		e.setAnimation()
 	}
 }
