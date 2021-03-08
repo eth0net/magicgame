@@ -9,6 +9,7 @@ import (
 type characterEntity struct {
 	*ecs.BasicEntity
 	*common.AnimationComponent
+	*common.SpaceComponent
 	*CharacterComponent
 	*speed.SpeedComponent
 }
