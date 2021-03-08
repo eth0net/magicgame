@@ -13,6 +13,8 @@ type characterEntity struct {
 	*speed.SpeedComponent
 }
 
+// setAnimation sets the characterEntity Animation
+// using the current state of the SpeedComponent.
 func (ce *characterEntity) setAnimation() {
 	point := ce.GetSpeedComponent().Point
 	currentAnimation := ce.AnimationComponent.CurrentAnimation

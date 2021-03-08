@@ -11,8 +11,8 @@ type ControlSystem struct {
 	entities []controlEntity
 }
 
-// New initialises SpeedSystem when it's added to the world.
-func (ss *ControlSystem) New(*ecs.World) {
+// New initialises ControlSystem when it's added to the world.
+func (cs *ControlSystem) New(*ecs.World) {
 	engo.Input.RegisterButton(ButtonUp, engo.KeyW, engo.KeyArrowUp)
 	engo.Input.RegisterButton(ButtonDown, engo.KeyS, engo.KeyArrowDown)
 	engo.Input.RegisterButton(ButtonLeft, engo.KeyA, engo.KeyArrowLeft)
@@ -80,7 +80,10 @@ func (cs *ControlSystem) Update(dt float32) {
 				vector.MultiplyScalar(2)
 			}
 
-			engo.Mailbox.Dispatch(speed.SpeedMessage{e.BasicEntity, vector})
+			engo.Mailbox.Dispatch(speed.SpeedMessage{
+				BasicEntity: e.BasicEntity,
+				Point:       vector,
+			})
 		}
 	}
 }
