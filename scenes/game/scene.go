@@ -68,7 +68,7 @@ func (g *Scene) Setup(u engo.Updater) {
 	player.ControlComponent.Enabled = true
 
 	npc, err := character.NewCharacter(character.NewCharacterOptions{
-		Position:       engo.Point{X: 800, Y: 928},
+		Position:       engo.Point{X: 800, Y: 568},
 		SpritesheetURL: "spritesheets/Female 24-1.png",
 		CellWidth:      32,
 		CellHeight:     32,
@@ -77,6 +77,15 @@ func (g *Scene) Setup(u engo.Updater) {
 	})
 	if err != nil {
 		log.Printf("Failed to create NPC entity, error: %s\n", err)
+	}
+	npc.CollisionComponent.Main = 1
+	npc.CollisionComponent.Group = 1
+	npc.CharacterComponent.Schedule = character.Schedule{
+		Actions: []character.Action{
+			{Type: character.ActWalkTo, Point: engo.Point{X: 900, Y: 600}},
+			{Type: character.ActWalkTo, Point: engo.Point{X: 700, Y: 600}},
+		},
+		Loop: true,
 	}
 
 	entityScroller := &common.EntityScroller{

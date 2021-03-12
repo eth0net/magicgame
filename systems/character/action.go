@@ -24,6 +24,10 @@ const (
 	// indicated by Point until Duration has passed.
 	ActRun
 
+	// ActTeleport teleports the Character in the direction
+	// indicated by Point until Duration has passed.
+	ActTeleport
+
 	// ActTurnTo turns the Character to face the location
 	// indicated by Point and updates the SpeedComponent.
 	ActTurnTo

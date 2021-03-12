@@ -2,6 +2,7 @@ package character
 
 import (
 	"github.com/EngoEngine/ecs"
+	"github.com/EngoEngine/engo"
 	"github.com/EngoEngine/engo/common"
 	"github.com/eth0net/magicgame/systems/speed"
 )
@@ -65,19 +66,102 @@ func (ce *characterEntity) setAnimation() {
 // according to the current Action for the Schedule
 // and then updates the Schedule accordingly.
 func (ce *characterEntity) runSchedule(dt float32) {
-	action := ce.CurrentAction()
-	if action == nil {
+	actionPtr := ce.CurrentAction()
+	if actionPtr == nil {
 		return
 	}
+
+	action := *actionPtr
+
+	var actComplete bool
 
 	switch action.Type {
 	case ActStop:
 		ce.SpeedComponent.Point = engo.Point{}
+		actComplete = true
+		break
+
+	case ActTurn:
+		ce.SpeedComponent.Point = action.Point
+		ce.setAnimation()
+		ce.SpeedComponent.Point = engo.Point{}
+		ce.setAnimation()
+		actComplete = true
+		break
+
+	case ActWalk:
+		vector, _ := action.Point.Normalize()
+		vector.MultiplyScalar(dt)
+
+		engo.Mailbox.Dispatch(speed.SpeedMessage{
+			BasicEntity: ce.BasicEntity,
+			Point:       vector,
+		})
+		actComplete = true
+		break
+
+	case ActRun:
+		vector, _ := action.Point.Normalize()
+		vector.MultiplyScalar(dt * 2)
+
+		engo.Mailbox.Dispatch(speed.SpeedMessage{
+			BasicEntity: ce.BasicEntity,
+			Point:       vector,
+		})
+		actComplete = true
+		break
+
+	case ActTeleport:
+		vector := action.Point.MultiplyScalar(dt)
+		ce.SpaceComponent.Position.Add(*vector)
+		actComplete = true
+		break
+
+	case ActTurnTo:
+		direction := action.Point.Subtract(ce.SpaceComponent.Position)
+		ce.SpeedComponent.Point = *direction
+		ce.setAnimation()
+		ce.SpeedComponent.Point = engo.Point{}
+		ce.setAnimation()
+		actComplete = ce.SpeedComponent.Point == action.Point
+		break
+
+	case ActWalkTo:
+		vector := action.Point
+		vector.Subtract(ce.SpaceComponent.Position)
+		vector, _ = vector.Normalize()
+		vector.MultiplyScalar(dt)
+		engo.Mailbox.Dispatch(speed.SpeedMessage{
+			BasicEntity: ce.BasicEntity,
+			Point:       vector,
+		})
+		if ce.SpaceComponent.Position.Equal(action.Point) {
+			actComplete = true
+		}
+		break
+
+	case ActRunTo:
+		direction := action.Point.Subtract(ce.SpaceComponent.Position)
+		vector, _ := direction.Normalize()
+		vector.MultiplyScalar(dt * 2)
+		engo.Mailbox.Dispatch(speed.SpeedMessage{
+			BasicEntity: ce.BasicEntity,
+			Point:       vector,
+		})
+		if ce.SpaceComponent.Position.Equal(action.Point) {
+			actComplete = true
+		}
+		break
+
+	case ActTeleportTo:
+		ce.SpaceComponent.Position = action.Point
+		actComplete = true
 		break
 	}
 
 	ce.currentDuration += dt
-	if ce.currentDuration >= action.Duration {
+	durationPassed := ce.currentDuration >= action.Duration
+	if actComplete && durationPassed {
 		ce.StepAction()
 	}
 }
