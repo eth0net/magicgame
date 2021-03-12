@@ -9,36 +9,32 @@ type ActionType int
 
 // ActionTypes available for use in Character Schedules.
 const (
-	// ActStop stops Character movement and turns the
-	// Character to face the direction indicated by Target.
+	// ActStop stops Character movement, preserving the direction.
 	ActStop ActionType = iota
 
 	// ActTurn turns the Character to face the direction
-	// indicated by Target and updates the SpeedComponent.
+	// indicated by Point and stops Character movement.
 	ActTurn
 
 	// ActWalk makes the Character walk in the direction
-	// indicated by Target until Duration has passed.
+	// indicated by Point until Duration has passed.
 	ActWalk
 
 	// ActRun makes the Character run in the direction
-	// indicated by Target until Duration has passed.
+	// indicated by Point until Duration has passed.
 	ActRun
 
 	// ActTurnTo turns the Character to face the location
-	// indicated by Target and updates the SpeedComponent.
+	// indicated by Point and updates the SpeedComponent.
 	ActTurnTo
 
-	// ActWalkTo makes the Character walk to the location
-	// indicated by Target, completing upon arrival.
+	// ActWalkTo makes the Character walk to the location indicated by Point.
 	ActWalkTo
 
-	// ActRunTo makes the Character run to the location
-	// indicated by Target, completing upon arrival.
+	// ActRunTo makes the Character run to the location indicated by Point.
 	ActRunTo
 
-	// ActTeleportTo instantly teleports the Character to the
-	// location indicated by Target, completing upon arrival.
+	// ActTeleportTo teleports the Character to the location indicated by Point.
 	ActTeleportTo
 
 	// Other ideas:
@@ -66,17 +62,18 @@ type Action struct {
 	//
 	// Examples:
 	//  - ActWalk uses Point as a direction.
-	//  - ActWalkTo uses Point as a destination.
+	//  - ActWalkTo uses Point as a location.
 	//
 	// When Point is a direction, the Action will be complete
-	// after one system update, unless Duration is greater than 0.
+	// after the Duration has passed. If Duration == 0, the
+	// Action will be complete after one system update.
 	//
-	// When Point is a destination, the Action will be complete
-	// when the Point is reached and Duration has no effect.
+	// When Point is a location, the Action will be complete
+	// after the Point is reached and the Duration has passed.
 	engo.Point
 
 	// Duration sets how long the Action should run for,
 	// if Duration is 0 the Action runs until complete.
-	// Note that Duration does not affect all ActionTypes.
+	// Note that Duration may not affect all ActionTypes.
 	Duration float32
 }
