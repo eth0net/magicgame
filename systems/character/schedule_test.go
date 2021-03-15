@@ -24,4 +24,34 @@ func TestSchedule(t *testing.T) {
 			t.Errorf("want CurrentAction == %v, got %v", want, got)
 		}
 	})
+
+	t.Run("StepAction", func(t *testing.T) {
+		schedule.currentAction = 1
+		schedule.currentDuration = 1
+		schedule.StepAction()
+
+		wantAction, gotAction := 2, schedule.currentAction
+		if wantAction != gotAction {
+			t.Errorf("want CurrentAction == %v, got %v", wantAction, gotAction)
+		}
+
+		wantDuration, gotDuration := float32(0), schedule.currentDuration
+		if wantDuration != gotDuration {
+			t.Errorf("want CurrentDuration == %v, got %v", wantDuration, gotDuration)
+		}
+
+		schedule.Loop = true
+		schedule.currentDuration++
+		schedule.StepAction()
+
+		wantAction, gotAction = 0, schedule.currentAction
+		if wantAction != gotAction {
+			t.Errorf("want CurrentAction == %v, got %v", wantAction, gotAction)
+		}
+
+		wantDuration, gotDuration = float32(0), schedule.currentDuration
+		if wantDuration != gotDuration {
+			t.Errorf("want CurrentDuration == %v, got %v", wantDuration, gotDuration)
+		}
+	})
 }
