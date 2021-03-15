@@ -24,7 +24,6 @@ func (cs *CharacterSystem) Add(
 	}
 	entity := characterEntity{basic, anim, space, char, speed}
 	cs.entities = append(cs.entities, entity)
-	char.Schedule.Actions = append(char.Schedule.Actions, Action{})
 }
 
 // AddByInterface adds entities to the system via Characterable interface.
