@@ -4,9 +4,10 @@ go 1.16
 
 require (
 	github.com/EngoEngine/ecs v1.0.5
-	github.com/EngoEngine/engo v1.0.5
+	github.com/EngoEngine/engo v1.0.6-0.20210314213613-b700def02163
 	github.com/davecgh/go-spew v1.1.1 // indirect
-	github.com/go-gl/glfw/v3.3/glfw v0.0.0-20201108214237-06ea97f0c265 // indirect
+	github.com/go-gl/gl v0.0.0-20210315015930-ae072cafe09d // indirect
+	github.com/go-gl/glfw/v3.3/glfw v0.0.0-20210311203641-62640a716d48 // indirect
 	github.com/go-gl/mathgl v1.0.0 // indirect
 	github.com/hajimehoshi/go-mp3 v0.3.1 // indirect
 	github.com/hajimehoshi/oto v0.7.1 // indirect
@@ -18,10 +19,10 @@ require (
 	golang.org/x/exp v0.0.0-20210220032938-85be41e4509f // indirect
 	golang.org/x/image v0.0.0-20210220032944-ac19c3e999fb // indirect
 	golang.org/x/mobile v0.0.0-20210220033013-bdb1ca9a1e08 // indirect
-	golang.org/x/net v0.0.0-20210226172049-e18ecbb05110 // indirect
-	golang.org/x/sys v0.0.0-20210301091718-77cc2087c03b // indirect
+	golang.org/x/net v0.0.0-20210316092652-d523dce5a7f4 // indirect
+	golang.org/x/sys v0.0.0-20210316164454-77fc1eacc6aa // indirect
 	golang.org/x/text v0.3.5 // indirect
 	gopkg.in/yaml.v3 v3.0.0-20210107192922-496545a6307b // indirect
 )
 
-replace github.com/EngoEngine/engo => github.com/eth0net/engo v1.0.6-0.20210213173655-0194dea64e1d
+replace github.com/EngoEngine/engo => github.com/eth0net/engo v1.0.6-0.20210314213613-b700def02163
