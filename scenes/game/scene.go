@@ -8,6 +8,7 @@ import (
 	"github.com/EngoEngine/engo"
 	"github.com/EngoEngine/engo/common"
 	"github.com/eth0net/magicgame/assets"
+	"github.com/eth0net/magicgame/entities/fireball"
 	"github.com/eth0net/magicgame/systems/character"
 	"github.com/eth0net/magicgame/util"
 )
@@ -30,6 +31,7 @@ func (g *Scene) Preload() {
 		"tilesets/Water1.png",
 		"tilemaps/fantasy1-min.tmx",
 	}
+	files = append(files, fireball.SpritesheetURL)
 	for _, file := range files {
 		data, err := assets.ReadFile(file)
 		if err != nil {
@@ -100,6 +102,7 @@ func (g *Scene) Setup(u engo.Updater) {
 	g.World.AddSystemInterface(collisionSystem, collisionable, nil)
 	g.World.AddSystemInterface(characterSystem, characterable, nil)
 	g.World.AddSystemInterface(controlSystem, controlable, nil)
+	g.World.AddSystemInterface(magicSystem, magicable, nil)
 	g.World.AddSystemInterface(speedSystem, speedable, nil)
 	g.World.AddSystem(entityScroller)
 

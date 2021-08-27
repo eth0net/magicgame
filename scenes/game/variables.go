@@ -4,6 +4,7 @@ import (
 	"github.com/EngoEngine/engo/common"
 	"github.com/eth0net/magicgame/systems/character"
 	"github.com/eth0net/magicgame/systems/control"
+	"github.com/eth0net/magicgame/systems/magic"
 	"github.com/eth0net/magicgame/systems/speed"
 )
 
@@ -14,6 +15,7 @@ var (
 	renderSystem    = &common.RenderSystem{}
 	characterSystem = &character.CharacterSystem{}
 	controlSystem   = &control.ControlSystem{}
+	magicSystem     = &magic.System{}
 	speedSystem     = &speed.SpeedSystem{}
 )
 
@@ -24,5 +26,6 @@ var (
 	renderable    *common.Renderable
 	characterable *character.Characterable
 	controlable   *control.Controlable
+	magicable     *magic.Able
 	speedable     *speed.Speedable
 )

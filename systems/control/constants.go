@@ -13,4 +13,5 @@ const (
 	ButtonLeft   string = "left"
 	ButtonRight  string = "right"
 	ButtonSprint string = "sprint"
+	ButtonMagic  string = "magic"
 )

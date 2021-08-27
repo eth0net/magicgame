@@ -1,3 +1,5 @@
 *.tiled-session
+.DS_Store
 
 bin
+.idea

@@ -3,6 +3,7 @@ package control
 import (
 	"github.com/EngoEngine/ecs"
 	"github.com/EngoEngine/engo"
+	"github.com/eth0net/magicgame/systems/magic"
 	"github.com/eth0net/magicgame/systems/speed"
 )
 
@@ -18,6 +19,7 @@ func (cs *ControlSystem) New(*ecs.World) {
 	engo.Input.RegisterButton(ButtonLeft, engo.KeyA, engo.KeyArrowLeft)
 	engo.Input.RegisterButton(ButtonRight, engo.KeyD, engo.KeyArrowRight)
 	engo.Input.RegisterButton(ButtonSprint, engo.KeyLeftShift)
+	engo.Input.RegisterButton(ButtonMagic, engo.KeyF)
 
 	engo.Input.RegisterAxis(
 		AxisVertical,
@@ -83,6 +85,12 @@ func (cs *ControlSystem) Update(dt float32) {
 			engo.Mailbox.Dispatch(speed.SpeedMessage{
 				BasicEntity: e.BasicEntity,
 				Point:       vector,
+			})
+		}
+
+		if engo.Input.Button(ButtonMagic).JustPressed() {
+			engo.Mailbox.Dispatch(magic.Message{
+				BasicEntity: e.BasicEntity,
 			})
 		}
 	}

@@ -2,9 +2,7 @@ package assets
 
 import "embed"
 
-//go:embed spritesheets
-//go:embed tilemaps/*min.tmx
-//go:embed tilesets/*.png
+//go:embed effects spritesheets tilemaps/*min.tmx tilesets/*.png
 var fs embed.FS
 
 // ReadFile wrapper for embedded assets fs.

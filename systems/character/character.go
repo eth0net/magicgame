@@ -7,6 +7,7 @@ import (
 	"github.com/EngoEngine/engo"
 	"github.com/EngoEngine/engo/common"
 	"github.com/eth0net/magicgame/systems/control"
+	"github.com/eth0net/magicgame/systems/magic"
 	"github.com/eth0net/magicgame/systems/speed"
 )
 
@@ -19,6 +20,7 @@ type Character struct {
 	common.SpaceComponent
 	CharacterComponent
 	control.ControlComponent
+	magic.Component
 	speed.SpeedComponent
 }
 
