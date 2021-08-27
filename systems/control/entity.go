@@ -29,10 +29,10 @@ func (ce *controlEntity) speed() (p engo.Point, changed bool) {
 
 	switch {
 	case upReleased, downReleased:
-		changed = true // TODO: try removing
+		changed = true
 		p.Y = 0
 	case leftReleased, rightReleased:
-		changed = true // TODO: try removing
+		changed = true
 		p.X = 0
 	case upHeld:
 		p.Y--
