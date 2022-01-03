@@ -1,5 +1,11 @@
+# Tiled session data can cause weird issues
 *.tiled-session
+
+# build data
+bin
+
+# macOS junk
 .DS_Store
 
-bin
+# JetBrains IDE stuff
 .idea
