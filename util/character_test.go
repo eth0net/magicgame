@@ -1,4 +1,4 @@
-package character
+package util
 
 import (
 	"reflect"
@@ -67,11 +67,11 @@ func TestNewCharacter(t *testing.T) {
 				}
 			})
 
-			t.Run("CharacterComponent", func(t *testing.T) {
-				want := tc.Expected.GetCharacterComponent()
-				got := character.GetCharacterComponent()
+			t.Run("ActionComponent", func(t *testing.T) {
+				want := tc.Expected.GetActionComponent()
+				got := character.GetActionComponent()
 				if !reflect.DeepEqual(want, got) {
-					t.Errorf("expected CharacterComponent == %v, gpt %v", want, got)
+					t.Errorf("expected ActionComponent == %v, gpt %v", want, got)
 				}
 			})
 
