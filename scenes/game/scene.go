@@ -64,7 +64,7 @@ func (g *Scene) Setup(u engo.Updater) {
 	if err != nil {
 		log.Printf("Failed to create Player entity, error: %s\n", err)
 	}
-	player.CollisionComponent.Main = 1
+	player.CollisionComponent.Group = util.CollisionPlayer
 	player.ControlComponent.Enabled = true
 
 	npc, err := util.NewCharacter(util.NewCharacterOptions{
@@ -78,8 +78,7 @@ func (g *Scene) Setup(u engo.Updater) {
 	if err != nil {
 		log.Printf("Failed to create NPC entity, error: %s\n", err)
 	}
-	npc.CollisionComponent.Main = 1
-	npc.CollisionComponent.Group = 1
+	npc.CollisionComponent.Group = util.CollisionEntity
 	npc.ActionComponent.Schedule = action.Schedule{
 		Actions: []action.Action{
 			{Type: action.ActWalkTo, Point: engo.Point{X: 900, Y: 600}},

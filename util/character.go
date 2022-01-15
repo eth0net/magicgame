@@ -57,7 +57,7 @@ func NewCharacter(o NewCharacterOptions) (p *Character, err error) {
 		p.AnimationComponent.AddDefaultAnimation(CharacterAnimations[5])
 	}
 
-	p.CollisionComponent.Group = 1
+	p.CollisionComponent.Main = CollisionWorld | CollisionPlayer | CollisionEntity
 	p.SpaceComponent = common.SpaceComponent{
 		Position: o.Position,
 		Width:    float32(o.CellWidth),

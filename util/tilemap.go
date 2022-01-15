@@ -101,7 +101,7 @@ func NewTilemap(url string) (tm *Tilemap, err error) {
 					}
 				}
 				o.AddShape(s)
-				o.CollisionComponent.Group = 1
+				o.CollisionComponent.Group = CollisionWorld
 			}
 
 			tm.Objects = append(tm.Objects, o)

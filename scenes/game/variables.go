@@ -5,12 +5,13 @@ import (
 	"github.com/eth0net/magicgame/systems/action"
 	"github.com/eth0net/magicgame/systems/control"
 	"github.com/eth0net/magicgame/systems/speed"
+	"github.com/eth0net/magicgame/util"
 )
 
 // Systems for scene.
 var (
 	animationSystem = &common.AnimationSystem{}
-	collisionSystem = &common.CollisionSystem{Solids: 1}
+	collisionSystem = &common.CollisionSystem{Solids: util.CollisionWorld | util.CollisionPlayer | util.CollisionEntity}
 	renderSystem    = &common.RenderSystem{}
 	actionSystem    = &action.ActionSystem{}
 	controlSystem   = &control.ControlSystem{}
