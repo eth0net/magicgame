@@ -67,12 +67,12 @@ func (ss *SpeedSystem) Remove(b ecs.BasicEntity) {
 
 // Update the SpeedSystem this frame.
 func (ss *SpeedSystem) Update(dt float32) {
-	speedX := speedScale * dt
-	speedY := speedScale * dt
+	v := engo.GetGlobalScale()
+	v.MultiplyScalar(dt * speedScale)
 
 	for _, e := range ss.entities {
-		e.Position.X = e.Position.X + speedX*e.SpeedComponent.X
-		e.Position.Y = e.Position.Y + speedY*e.SpeedComponent.Y
+		e.Position.X = e.Position.X + v.X*e.SpeedComponent.X
+		e.Position.Y = e.Position.Y + v.Y*e.SpeedComponent.Y
 
 		// limit to map borders
 		var limitX float32 = ss.Level.Bounds().Max.X - e.Width
