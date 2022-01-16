@@ -1,6 +1,7 @@
 package util
 
 import (
+	"fmt"
 	"log"
 	"strconv"
 
@@ -37,13 +38,10 @@ type Tilemap struct {
 func NewTilemap(url string) (tm *Tilemap, err error) {
 	resource, err := engo.Files.Resource(url)
 	if err != nil {
-		return nil, err
+		return nil, fmt.Errorf("error getting resource: %w", err)
 	}
 
-	tm = &Tilemap{
-		Level: resource.(common.TMXResource).Level,
-		Tiles: []*Tile{},
-	}
+	tm = &Tilemap{Level: resource.(common.TMXResource).Level}
 
 	for idx, layer := range tm.Level.TileLayers {
 		for _, tile := range layer.Tiles {
@@ -108,7 +106,7 @@ func NewTilemap(url string) (tm *Tilemap, err error) {
 		}
 	}
 
-	return tm, err
+	return tm, nil
 }
 
 // AddTilesToWorld adds each Tile entity to the given world.
