@@ -11,10 +11,17 @@
 - [ ] Weather
 - [ ] Generate new areas / NPCs
 
+## v0.5.0 (WIP)
+
+- [x] Scale speed system with global scale
+- [x] Split character utils and action system
+- [ ] Move spawn points to map
+- [ ] Add NPC path to map
+
 ## v0.4.0
 
 - [x] Add an NPC
-- [x] Add action system to handle scripted behaviour
+- [x] Add character system
 
 ## v0.3.0
 
