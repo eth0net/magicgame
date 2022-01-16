@@ -3,7 +3,6 @@ package util
 import (
 	"fmt"
 	"log"
-	"strconv"
 
 	"github.com/EngoEngine/ecs"
 	"github.com/EngoEngine/engo"
@@ -29,9 +28,19 @@ type Object struct {
 // A Tilemap entity stores the
 // data for a single Tiled map.
 type Tilemap struct {
-	Level   *common.Level
-	Tiles   []*Tile
+	Level *common.Level
+
+	// Tiles contains tiles from all tile layers.
+	Tiles []*Tile
+
+	// Objects contains objects from all object layers.
 	Objects []*Object
+
+	// Paths contains objects from layers named Paths.
+	Paths map[string]*Object
+
+	// Spawns contains objects from layers named Spawns.
+	Spawns map[string]*Object
 }
 
 // NewTilemap constructs a new Tilemap from the provided file url.
@@ -41,7 +50,11 @@ func NewTilemap(url string) (tm *Tilemap, err error) {
 		return nil, fmt.Errorf("error getting resource: %w", err)
 	}
 
-	tm = &Tilemap{Level: resource.(common.TMXResource).Level}
+	tm = &Tilemap{
+		Level:  resource.(common.TMXResource).Level,
+		Paths:  map[string]*Object{},
+		Spawns: map[string]*Object{},
+	}
 
 	for idx, layer := range tm.Level.TileLayers {
 		for _, tile := range layer.Tiles {
@@ -55,11 +68,13 @@ func NewTilemap(url string) (tm *Tilemap, err error) {
 			}
 			t.RenderComponent = common.RenderComponent{
 				Drawable:    tile.Image,
-				Scale:       engo.Point{X: 1, Y: 1},
 				StartZIndex: float32(idx),
 			}
 			t.SpaceComponent = common.SpaceComponent{
 				Position: tile.Point,
+				Width:    float32(tm.Level.TileWidth),
+				Height:   float32(tm.Level.TileHeight),
+				Rotation: tile.Rotation,
 			}
 			tm.Tiles = append(tm.Tiles, t)
 		}
@@ -70,36 +85,35 @@ func NewTilemap(url string) (tm *Tilemap, err error) {
 			o := &Object{BasicEntity: ecs.NewBasic()}
 			o.SpaceComponent = common.SpaceComponent{
 				Position: engo.Point{X: object.X, Y: object.Y},
-				Width:    32,
-				Height:   32,
+				Width:    object.Width,
+				Height:   object.Height,
 			}
 
-			var collision bool
-			for _, property := range layer.Properties {
-				if property.Name != "Collision" {
-					continue
-				}
-				collision, _ = strconv.ParseBool(property.Value)
-			}
-			if collision {
-				s := common.Shape{}
-				for _, tmxLine := range object.Lines {
-					for _, line := range tmxLine.Lines {
-						l := engo.Line{
-							P1: engo.Point{
-								X: line.P1.X - object.X,
-								Y: line.P1.Y - object.Y,
-							},
-							P2: engo.Point{
-								X: line.P2.X - object.X,
-								Y: line.P2.Y - object.Y,
-							},
-						}
-						s.Lines = append(s.Lines, l)
+			shape := common.Shape{}
+			for _, tmxLine := range object.Lines {
+				for _, line := range tmxLine.Lines {
+					l := engo.Line{
+						P1: engo.Point{
+							X: line.P1.X - object.X,
+							Y: line.P1.Y - object.Y,
+						},
+						P2: engo.Point{
+							X: line.P2.X - object.X,
+							Y: line.P2.Y - object.Y,
+						},
 					}
+					shape.Lines = append(shape.Lines, l)
 				}
-				o.AddShape(s)
+			}
+			o.SpaceComponent.AddShape(shape)
+
+			switch object.Type {
+			case "Collision":
 				o.CollisionComponent.Group = CollisionWorld
+			case "Path":
+				tm.Paths[object.Name] = o
+			case "Spawn":
+				tm.Spawns[object.Name] = o
 			}
 
 			tm.Objects = append(tm.Objects, o)

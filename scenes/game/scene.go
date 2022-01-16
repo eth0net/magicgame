@@ -53,8 +53,13 @@ func (g *Scene) Setup(u engo.Updater) {
 	}
 	speedSystem.Level = tilemap.Level
 
+	playerSpawn, ok := tilemap.Spawns[PlayerSpawnName]
+	if !ok {
+		panic("no player spawn found in tilemap")
+	}
+
 	player, err := util.NewCharacter(util.NewCharacterOptions{
-		Position:       engo.Point{X: 800, Y: 600},
+		Position:       playerSpawn.Position,
 		SpritesheetURL: spritesheetURL,
 		CellWidth:      32,
 		CellHeight:     32,
@@ -67,8 +72,13 @@ func (g *Scene) Setup(u engo.Updater) {
 	player.CollisionComponent.Group = util.CollisionPlayer
 	player.ControlComponent.Enabled = true
 
+	npcSpawn, ok := tilemap.Spawns[NPCSpawnName]
+	if !ok {
+		panic("no npc spawn found in tilemap")
+	}
+
 	npc, err := util.NewCharacter(util.NewCharacterOptions{
-		Position:       engo.Point{X: 800, Y: 568},
+		Position:       npcSpawn.Position,
 		SpritesheetURL: "spritesheets/Female 24-1.png",
 		CellWidth:      32,
 		CellHeight:     32,

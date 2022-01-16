@@ -15,8 +15,8 @@
 
 - [x] Scale speed system with global scale
 - [x] Split character utils and action system
-- [ ] Move spawn points to map
-- [ ] Add NPC path to map
+- [x] Move spawn points to map
+- [ ] Move NPC path to map
 
 ## v0.4.0
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="50" height="50" tilewidth="32" tileheight="32" infinite="0" nextlayerid="18" nextobjectid="29">
+<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="50" height="50" tilewidth="32" tileheight="32" infinite="0" nextlayerid="21" nextobjectid="40">
  <editorsettings>
   <export target="fantasy1-min.tmx" format="tmx"/>
  </editorsettings>
@@ -27,30 +27,39 @@
    eJzt0TEKgDAUBNFs7n9R7fQEamETsRACzocZkLX84aW31s8vxZdww4y9/6s2eqz5+6LvLXl67AXfsUUPUnqw0oOVHqz0YKUHKz1Y6cFKD1Z6sNKDlR6s9GClBys9WOnBSg9WerDSg5UerPRg9eZxva/ajh7Vl3DDjD0ALV+BYA==
   </data>
  </layer>
- <objectgroup id="13" name="Collision">
+ <objectgroup id="13" name="Collisions">
   <properties>
    <property name="Collision" type="bool" value="true"/>
   </properties>
-  <object id="17" name="Top" x="0" y="0">
-   <polygon points="32,64 1568,64 1568,86 32,86"/>
+  <object id="32" name="Water3" type="Collision" x="640" y="736" width="320" height="128">
+   <polygon points="0,0 320,0 320,128 0,128"/>
   </object>
-  <object id="19" name="Left" x="0" y="64">
-   <polygon points="67.5,0 32,0 32,1504 67.5,1504"/>
-  </object>
-  <object id="20" name="Right" x="1536" y="64">
-   <polygon points="-3.5,0 32,0 32,1504 -3.5,1504"/>
-  </object>
-  <object id="21" name="Bottom" x="0" y="1536">
-   <polygon points="64,0 1536,0 1536,32 64,32"/>
-  </object>
-  <object id="26" name="Water1" x="736" y="640">
-   <polygon points="0,0 128,0 128,320 0,320"/>
-  </object>
-  <object id="27" name="Water2" x="672" y="672">
+  <object id="33" name="Water2" type="Collision" x="672" y="672" width="256" height="256">
    <polygon points="0,0 256,0 256,256 0,256"/>
   </object>
-  <object id="28" name="Water3" x="640" y="736">
-   <polygon points="0,0 320,0 320,128 0,128"/>
+  <object id="34" name="Water1" type="Collision" x="736" y="640" width="128" height="320">
+   <polygon points="0,0 128,0 128,320 0,320"/>
+  </object>
+  <object id="37" name="West" type="Collision" x="32" y="32" width="32" height="1536">
+   <polygon points="0,0 32,0 32,1536 0,1536"/>
+  </object>
+  <object id="35" name="South" type="Collision" x="32" y="1536" width="1536" height="32">
+   <polygon points="0,0 1536,0 1536,32 0,32"/>
+  </object>
+  <object id="39" name="East" type="Collision" x="1536" y="32" width="32" height="1536">
+   <polygon points="0,0 32,0 32,1536 0,1536"/>
+  </object>
+  <object id="36" name="North" type="Collision" x="32" y="32" width="1536" height="32">
+   <polygon points="0,0 1536,0 1536,32 0,32"/>
+  </object>
+ </objectgroup>
+ <objectgroup id="18" name="Spawns">
+  <object id="29" name="PlayerSpawn" type="Spawn" x="832" y="544" width="32" height="32"/>
+  <object id="30" name="NPCSpawn" type="Spawn" x="736" y="544" width="32" height="32"/>
+ </objectgroup>
+ <objectgroup id="19" name="Paths">
+  <object id="31" name="NPCPath" type="Path" x="512" y="512">
+   <polygon points="0,0 544,0 544,544 0,544"/>
   </object>
  </objectgroup>
 </map>
