@@ -1,4 +1,4 @@
-package action
+package character
 
 import (
 	"github.com/EngoEngine/engo"
@@ -7,43 +7,43 @@ import (
 // ActionType indicates the type of an Action.
 type ActionType int
 
-// ActionTypes available for use in Schedules.
+// ActionTypes available for use in Character Schedules.
 const (
-	// ActStop stops movement, preserving the direction.
+	// ActStop stops Character movement, preserving the direction.
 	ActStop ActionType = iota
 
-	// ActTurn turns the Entity to face the direction
-	// indicated by Point and stops movement.
+	// ActTurn turns the Character to face the direction
+	// indicated by Point and stops Character movement.
 	ActTurn
 
-	// ActWalk makes the Entity walk in the direction
+	// ActWalk makes the Character walk in the direction
 	// indicated by Point until Duration has passed.
 	ActWalk
 
-	// ActRun makes the Entity run in the direction
+	// ActRun makes the Character run in the direction
 	// indicated by Point until Duration has passed.
 	ActRun
 
-	// ActTeleport teleports the Entity in the direction
+	// ActTeleport teleports the Character in the direction
 	// indicated by Point until Duration has passed.
 	ActTeleport
 
-	// ActTurnTo turns the Entity to face the location
+	// ActTurnTo turns the Character to face the location
 	// indicated by Point and updates the SpeedComponent.
 	ActTurnTo
 
-	// ActWalkTo walks the Entity to the location indicated by Point.
+	// ActWalkTo makes the Character walk to the location indicated by Point.
 	ActWalkTo
 
-	// ActRunTo runs the Entity to the location indicated by Point.
+	// ActRunTo makes the Character run to the location indicated by Point.
 	ActRunTo
 
-	// ActTeleportTo teleports the Entity to the location indicated by Point.
+	// ActTeleportTo teleports the Character to the location indicated by Point.
 	ActTeleportTo
 
 	// Other ideas:
 	// FollowPath
-	// FollowEntity
+	// FollowCharacter
 	// FollowSpaceComponent
 	// Interact
 	// Attack
@@ -53,10 +53,10 @@ const (
 	// Anything else
 )
 
-// An Action defines a single act for a Entity.
-// Actions are used to create Schedules.
+// An Action defines a single act for a Character.
+// Actions are used to create Character Schedules.
 type Action struct {
-	// Type determines what to do to the Entity
+	// Type determines what to do to the Character
 	// and how to interpret the other Action fields.
 	Type ActionType
 

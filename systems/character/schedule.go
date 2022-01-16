@@ -1,6 +1,6 @@
-package action
+package character
 
-// A Schedule contains a list of Actions to perform.
+// A Schedule contains a list of Actions for Characters to perform.
 type Schedule struct {
 	Actions         []Action
 	Loop            bool

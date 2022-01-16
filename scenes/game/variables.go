@@ -2,7 +2,7 @@ package game
 
 import (
 	"github.com/EngoEngine/engo/common"
-	"github.com/eth0net/magicgame/systems/action"
+	"github.com/eth0net/magicgame/systems/character"
 	"github.com/eth0net/magicgame/systems/control"
 	"github.com/eth0net/magicgame/systems/speed"
 )
@@ -12,7 +12,7 @@ var (
 	animationSystem = &common.AnimationSystem{}
 	collisionSystem = &common.CollisionSystem{Solids: 1}
 	renderSystem    = &common.RenderSystem{}
-	actionSystem    = &action.ActionSystem{}
+	characterSystem = &character.CharacterSystem{}
 	controlSystem   = &control.ControlSystem{}
 	speedSystem     = &speed.SpeedSystem{}
 )
@@ -22,7 +22,7 @@ var (
 	animationable *common.Animationable
 	collisionable *common.Collisionable
 	renderable    *common.Renderable
-	actionable    *action.Actionable
+	characterable *character.Characterable
 	controlable   *control.Controlable
 	speedable     *speed.Speedable
 )

@@ -8,7 +8,7 @@ import (
 	"github.com/EngoEngine/engo"
 	"github.com/EngoEngine/engo/common"
 	"github.com/eth0net/magicgame/assets"
-	"github.com/eth0net/magicgame/systems/action"
+	"github.com/eth0net/magicgame/systems/character"
 	"github.com/eth0net/magicgame/util"
 )
 
@@ -53,7 +53,7 @@ func (g *Scene) Setup(u engo.Updater) {
 	}
 	speedSystem.Level = tilemap.Level
 
-	player, err := util.NewCharacter(util.NewCharacterOptions{
+	player, err := character.NewCharacter(character.NewCharacterOptions{
 		Position:       engo.Point{X: 800, Y: 600},
 		SpritesheetURL: spritesheetURL,
 		CellWidth:      32,
@@ -67,7 +67,7 @@ func (g *Scene) Setup(u engo.Updater) {
 	player.CollisionComponent.Main = 1
 	player.ControlComponent.Enabled = true
 
-	npc, err := util.NewCharacter(util.NewCharacterOptions{
+	npc, err := character.NewCharacter(character.NewCharacterOptions{
 		Position:       engo.Point{X: 800, Y: 568},
 		SpritesheetURL: "spritesheets/Female 24-1.png",
 		CellWidth:      32,
@@ -80,10 +80,10 @@ func (g *Scene) Setup(u engo.Updater) {
 	}
 	npc.CollisionComponent.Main = 1
 	npc.CollisionComponent.Group = 1
-	npc.ActionComponent.Schedule = action.Schedule{
-		Actions: []action.Action{
-			{Type: action.ActWalkTo, Point: engo.Point{X: 900, Y: 600}},
-			{Type: action.ActWalkTo, Point: engo.Point{X: 700, Y: 600}},
+	npc.CharacterComponent.Schedule = character.Schedule{
+		Actions: []character.Action{
+			{Type: character.ActWalkTo, Point: engo.Point{X: 900, Y: 600}},
+			{Type: character.ActWalkTo, Point: engo.Point{X: 700, Y: 600}},
 		},
 		Loop: true,
 	}
@@ -98,7 +98,7 @@ func (g *Scene) Setup(u engo.Updater) {
 	g.World.AddSystemInterface(renderSystem, renderable, nil)
 	g.World.AddSystemInterface(animationSystem, animationable, nil)
 	g.World.AddSystemInterface(collisionSystem, collisionable, nil)
-	g.World.AddSystemInterface(actionSystem, actionable, nil)
+	g.World.AddSystemInterface(characterSystem, characterable, nil)
 	g.World.AddSystemInterface(controlSystem, controlable, nil)
 	g.World.AddSystemInterface(speedSystem, speedable, nil)
 	g.World.AddSystem(entityScroller)

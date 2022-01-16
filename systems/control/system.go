@@ -74,6 +74,7 @@ func (cs *ControlSystem) Update(dt float32) {
 		}
 		if vector, changed := e.speed(); changed {
 			vector, _ = vector.Normalize()
+			vector.MultiplyScalar(dt)
 
 			if engo.Input.Button(ButtonSprint).Down() {
 				vector.MultiplyScalar(2)

@@ -1,34 +1,24 @@
-package action
+package character
 
 import (
 	"testing"
 
 	"github.com/EngoEngine/ecs"
-	"github.com/EngoEngine/engo/common"
-	"github.com/eth0net/magicgame/systems/speed"
 )
 
 func TestSystem(t *testing.T) {
 	t.Parallel()
 
-	entity := &struct {
-		ecs.BasicEntity
-		common.AnimationComponent
-		common.SpaceComponent
-		ActionComponent
-		speed.SpeedComponent
-	}{
-		BasicEntity: ecs.NewBasic(),
-	}
-	system := &ActionSystem{}
+	character := &Character{}
+	system := &CharacterSystem{}
 
 	t.Run("Add", func(t *testing.T) {
 		system.Add(
-			entity.GetBasicEntity(),
-			entity.GetAnimationComponent(),
-			entity.GetSpaceComponent(),
-			entity.GetActionComponent(),
-			entity.GetSpeedComponent(),
+			&character.BasicEntity,
+			&character.AnimationComponent,
+			&character.SpaceComponent,
+			&character.CharacterComponent,
+			&character.SpeedComponent,
 		)
 		want, got := 1, len(system.entities)
 		if want != got {
@@ -37,18 +27,19 @@ func TestSystem(t *testing.T) {
 	})
 
 	t.Run("Remove", func(t *testing.T) {
-		system.Remove(entity.BasicEntity)
+		system.Remove(character.BasicEntity)
 		want, got := 0, len(system.entities)
 		if want != got {
 			t.Errorf("want len == %v, got %v", want, got)
 		}
 	})
 
+	world := &ecs.World{}
+	var characterable *Characterable
+
 	t.Run("AddSystemInterface", func(t *testing.T) {
-		var actionable *Actionable
-		var world ecs.World
-		world.AddSystemInterface(system, actionable, nil)
-		world.AddEntity(entity)
+		world.AddSystemInterface(system, characterable, nil)
+		world.AddEntity(character)
 		want, got := 1, len(system.entities)
 		if want != got {
 			t.Errorf("want len == %v, got %v", want, got)
