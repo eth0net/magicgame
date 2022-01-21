@@ -29,6 +29,7 @@ type NewCharacterOptions struct {
 	Position              engo.Point
 	SpritesheetURL        string
 	CellWidth, CellHeight int
+	CollisionGroup        common.CollisionGroup
 	AnimationRate         float32
 	StartZIndex           float32
 }
@@ -58,6 +59,7 @@ func NewCharacter(o NewCharacterOptions) (p *Character, err error) {
 	}
 
 	p.CollisionComponent.Main = CollisionWorld | CollisionPlayer | CollisionEntity
+	p.CollisionComponent.Group = o.CollisionGroup
 	p.SpaceComponent = common.SpaceComponent{
 		Position: o.Position,
 		Width:    float32(o.CellWidth),

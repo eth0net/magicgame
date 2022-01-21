@@ -55,7 +55,7 @@ func (g *Scene) Setup(u engo.Updater) {
 
 	playerSpawn, ok := tilemap.Spawns[PlayerSpawnName]
 	if !ok {
-		panic("no player spawn found in tilemap")
+		log.Println("no player spawn found in tilemap")
 	}
 
 	player, err := util.NewCharacter(util.NewCharacterOptions{
@@ -63,18 +63,18 @@ func (g *Scene) Setup(u engo.Updater) {
 		SpritesheetURL: spritesheetURL,
 		CellWidth:      32,
 		CellHeight:     32,
+		CollisionGroup: util.CollisionPlayer,
 		AnimationRate:  0.1,
 		StartZIndex:    3,
 	})
 	if err != nil {
 		log.Printf("Failed to create Player entity, error: %s\n", err)
 	}
-	player.CollisionComponent.Group = util.CollisionPlayer
 	player.ControlComponent.Enabled = true
 
 	npcSpawn, ok := tilemap.Spawns[NPCSpawnName]
 	if !ok {
-		panic("no npc spawn found in tilemap")
+		log.Println("no npc spawn found in tilemap")
 	}
 
 	npc, err := util.NewCharacter(util.NewCharacterOptions{
@@ -82,13 +82,13 @@ func (g *Scene) Setup(u engo.Updater) {
 		SpritesheetURL: "spritesheets/Female 24-1.png",
 		CellWidth:      32,
 		CellHeight:     32,
+		CollisionGroup: util.CollisionEntity,
 		AnimationRate:  0.1,
 		StartZIndex:    3,
 	})
 	if err != nil {
 		log.Printf("Failed to create NPC entity, error: %s\n", err)
 	}
-	npc.CollisionComponent.Group = util.CollisionEntity
 	npc.ActionComponent.Schedule = action.Schedule{
 		Actions: []action.Action{
 			{Type: action.ActWalkTo, Point: engo.Point{X: 900, Y: 600}},

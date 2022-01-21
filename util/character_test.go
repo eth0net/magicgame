@@ -18,7 +18,7 @@ func TestNewCharacter(t *testing.T) {
 			Name:    "DefaultOptions",
 			Options: NewCharacterOptions{},
 			Expected: &Character{
-				CollisionComponent: common.CollisionComponent{Group: 1},
+				CollisionComponent: common.CollisionComponent{Main: CollisionWorld | CollisionPlayer | CollisionEntity},
 				ControlComponent: control.ControlComponent{
 					Vertical:   control.AxisVertical,
 					Horizontal: control.AxisHorizontal,
