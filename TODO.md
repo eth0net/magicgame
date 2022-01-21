@@ -5,25 +5,37 @@
 - [ ] Player stats HUD
 - [ ] Magic/Weapon/Melee attacks
 - [ ] Action interface to extract logic from system
+- [ ] Action trees to build complex branching behaviour
+- [ ] Add player detection to trigger actions
+- [ ] Extend ActionComponent to support multiple schedules
+- [ ] WalkShape action?
+- [ ] Wander action
+- [ ] WanderTo action
+- [ ] Move character sprites to child entities
+- [ ] Add character shadows
+- [ ] Skill training system
 - [ ] Interaction system for talking and looting
 - [ ] Inventory system
 - [ ] Shops
 - [ ] Weather
 - [ ] Generate new areas / NPCs
+- [ ] Multiverse
+- [ ] Time dilation?
+- [ ] Multiplayer?
 
-## v0.5.0 (WIP)
+## v0.5.0 Dev QoL (WIP)
 
 - [x] Scale speed system with global scale
 - [x] Split character utils and action system
 - [x] Move spawn points to map
 - [ ] Move NPC path to map
 
-## v0.4.0
+## v0.4.0 NPC
 
 - [x] Add an NPC
 - [x] Add character system
 
-## v0.3.0
+## v0.3.0 Gotta go fast
 
 - [x] Add sprint to character controls
 - [x] Fix window resizing with scaling
