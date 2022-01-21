@@ -30,16 +30,16 @@ type Object struct {
 type Tilemap struct {
 	Level *common.Level
 
-	// Tiles contains tiles from all tile layers.
+	// Tiles contains all tiles from the map.
 	Tiles []*Tile
 
-	// Objects contains objects from all object layers.
+	// Objects contains all objects from the map.
 	Objects []*Object
 
-	// Paths contains objects from layers named Paths.
-	Paths map[string]*Object
+	// Points contains objects of type Point.
+	Points map[string]*Object
 
-	// Spawns contains objects from layers named Spawns.
+	// Spawns contains objects of type Spawn.
 	Spawns map[string]*Object
 }
 
@@ -52,7 +52,7 @@ func NewTilemap(url string) (tm *Tilemap, err error) {
 
 	tm = &Tilemap{
 		Level:  resource.(common.TMXResource).Level,
-		Paths:  map[string]*Object{},
+		Points: map[string]*Object{},
 		Spawns: map[string]*Object{},
 	}
 
@@ -110,8 +110,8 @@ func NewTilemap(url string) (tm *Tilemap, err error) {
 			switch object.Type {
 			case "Collision":
 				o.CollisionComponent.Group = CollisionWorld
-			case "Path":
-				tm.Paths[object.Name] = o
+			case "Point":
+				tm.Points[object.Name] = o
 			case "Spawn":
 				tm.Spawns[object.Name] = o
 			}

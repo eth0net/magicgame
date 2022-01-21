@@ -9,8 +9,6 @@
 - [ ] Add player detection to trigger actions
 - [ ] Extend ActionComponent to support multiple schedules
 - [ ] WalkShape action?
-- [ ] Wander action
-- [ ] WanderTo action
 - [ ] Move character sprites to child entities
 - [ ] Add character shadows
 - [ ] Skill training system
@@ -28,7 +26,10 @@
 - [x] Scale speed system with global scale
 - [x] Split character utils and action system
 - [x] Move spawn points to map
-- [ ] Move NPC path to map
+- [x] Move NPC path to map
+- [ ] Fix NPC movement animations
+- [ ] Wander action
+- [ ] WanderTo action
 
 ## v0.4.0 NPC
 

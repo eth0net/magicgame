@@ -91,8 +91,10 @@ func (g *Scene) Setup(u engo.Updater) {
 	}
 	npc.ActionComponent.Schedule = action.Schedule{
 		Actions: []action.Action{
-			{Type: action.ActWalkTo, Point: engo.Point{X: 900, Y: 600}},
-			{Type: action.ActWalkTo, Point: engo.Point{X: 700, Y: 600}},
+			{Type: action.ActWalkTo, Point: tilemap.Points["NPCPoint1"].Position},
+			{Type: action.ActWalkTo, Point: tilemap.Points["NPCPoint2"].Position},
+			{Type: action.ActWalkTo, Point: tilemap.Points["NPCPoint3"].Position},
+			{Type: action.ActWalkTo, Point: tilemap.Points["NPCPoint4"].Position},
 		},
 		Loop: true,
 	}
