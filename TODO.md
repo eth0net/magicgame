@@ -27,7 +27,7 @@
 - [x] Split character utils and action system
 - [x] Move spawn points to map
 - [x] Move NPC path to map
-- [ ] Fix NPC movement animations
+- [x] Fix NPC movement animations
 - [ ] Wander action
 - [ ] WanderTo action
 

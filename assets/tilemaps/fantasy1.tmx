@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="50" height="50" tilewidth="32" tileheight="32" infinite="0" nextlayerid="22" nextobjectid="45">
+<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="50" height="50" tilewidth="32" tileheight="32" infinite="0" nextlayerid="22" nextobjectid="53">
  <editorsettings>
   <export target="fantasy1-min.tmx" format="tmx"/>
  </editorsettings>
@@ -58,22 +58,62 @@
   <object id="30" name="NPCSpawn" type="Spawn" x="736" y="544" width="32" height="32"/>
  </objectgroup>
  <objectgroup id="19" name="Paths">
-  <object id="40" name="NPCPoint1" type="Point" x="512" y="512" width="32" height="32">
+  <object id="47" name="NPCPoint12" type="Point" x="608" y="1056" width="32" height="32">
    <properties>
-    <property name="Next" type="object" value="41"/>
+    <property name="Next" type="object" value="45"/>
    </properties>
   </object>
-  <object id="41" name="NPCPoint2" type="Point" x="1024" y="512" width="32" height="32">
+  <object id="43" name="NPCPoint11" type="Point" x="512" y="1056" width="32" height="32">
    <properties>
-    <property name="Next" type="object" value="42"/>
+    <property name="Next" type="object" value="47"/>
    </properties>
   </object>
-  <object id="42" name="NPCPoint3" type="Point" x="1024" y="1024" width="32" height="32">
+  <object id="48" name="NPCPoint10" type="Point" x="512" y="960" width="32" height="32">
    <properties>
     <property name="Next" type="object" value="43"/>
    </properties>
   </object>
-  <object id="43" name="NPCPoint4" type="Point" x="512" y="1024" width="32" height="32">
+  <object id="49" name="NPCPoint9" type="Point" x="1056" y="960" width="32" height="32">
+   <properties>
+    <property name="Next" type="object" value="48"/>
+   </properties>
+  </object>
+  <object id="42" name="NPCPoint8" type="Point" x="1056" y="1056" width="32" height="32">
+   <properties>
+    <property name="Next" type="object" value="49"/>
+   </properties>
+  </object>
+  <object id="50" name="NPCPoint7" type="Point" x="960" y="1056" width="32" height="32">
+   <properties>
+    <property name="Next" type="object" value="42"/>
+   </properties>
+  </object>
+  <object id="41" name="NPCPoint6" type="Point" x="960" y="512" width="32" height="32">
+   <properties>
+    <property name="Next" type="object" value="50"/>
+   </properties>
+  </object>
+  <object id="51" name="NPCPoint5" type="Point" x="1056" y="512" width="32" height="32">
+   <properties>
+    <property name="Next" type="object" value="41"/>
+   </properties>
+  </object>
+  <object id="52" name="NPCPoint4" type="Point" x="1056" y="608" width="32" height="32">
+   <properties>
+    <property name="Next" type="object" value="51"/>
+   </properties>
+  </object>
+  <object id="46" name="NPCPoint3" type="Point" x="512" y="608" width="32" height="32">
+   <properties>
+    <property name="Next" type="object" value="52"/>
+   </properties>
+  </object>
+  <object id="40" name="NPCPoint2" type="Point" x="512" y="512" width="32" height="32">
+   <properties>
+    <property name="Next" type="object" value="46"/>
+   </properties>
+  </object>
+  <object id="45" name="NPCPoint1" type="Point" x="608" y="512" width="32" height="32">
    <properties>
     <property name="Next" type="object" value="40"/>
    </properties>
