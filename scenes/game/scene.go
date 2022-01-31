@@ -23,6 +23,7 @@ func (g *Scene) Preload() {
 	files := []string{
 		"spritesheets/Male 18-1.png",
 		"spritesheets/Female 24-1.png",
+		"spritesheets/LightShadow_pipo.png",
 		"tilesets/BaseChip.png",
 		"tilesets/Dirt1.png",
 		"tilesets/Grass1-Dirt1.png",
@@ -68,9 +69,15 @@ func (g *Scene) Setup(u engo.Updater) {
 		StartZIndex:    3,
 	})
 	if err != nil {
-		log.Printf("Failed to create Player entity, error: %s\n", err)
+		log.Printf("failed to create Player entity, error: %s\n", err)
 	}
 	player.ControlComponent.Enabled = true
+
+	playerShadow, err := util.NewCharacterShadow(player)
+	if err != nil {
+		log.Printf("failed to create Shadow entity, error: %s\n", err)
+	}
+	player.BasicEntity.AppendChild(playerShadow.GetBasicEntity())
 
 	npcSpawn, ok := tilemap.Spawns[NPCSpawnName]
 	if !ok {
@@ -107,6 +114,12 @@ func (g *Scene) Setup(u engo.Updater) {
 		Loop: true,
 	}
 
+	npcShadow, err := util.NewCharacterShadow(npc)
+	if err != nil {
+		log.Printf("failed to create Shadow entity, error: %s\n", err)
+	}
+	npc.BasicEntity.AppendChild(npcShadow.GetBasicEntity())
+
 	entityScroller := &common.EntityScroller{
 		SpaceComponent: &player.SpaceComponent,
 		TrackingBounds: tilemap.Level.Bounds(),
@@ -124,7 +137,9 @@ func (g *Scene) Setup(u engo.Updater) {
 
 	tilemap.AddTilesToWorld(g.World)
 	g.World.AddEntity(player)
+	g.World.AddEntity(playerShadow)
 	g.World.AddEntity(npc)
+	g.World.AddEntity(npcShadow)
 
 	engo.Mailbox.Listen("WindowResizeMessage", func(msg engo.Message) {
 		offsetX, offsetY := engo.GameWidth()/2, engo.GameHeight()/2

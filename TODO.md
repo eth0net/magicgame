@@ -2,15 +2,15 @@
 
 ## Planned
 
-- [ ] Player stats HUD
+- [ ] Player HUD
 - [ ] Magic/Weapon/Melee attacks
 - [ ] Action interface to extract logic from system
 - [ ] Action trees to build complex branching behaviour
 - [ ] Add player detection to trigger actions
 - [ ] Extend ActionComponent to support multiple schedules
+- [ ] Wander action
+- [ ] WanderTo action
 - [ ] WalkShape action?
-- [ ] Move character sprites to child entities
-- [ ] Add character shadows
 - [ ] Skill training system
 - [ ] Interaction system for talking and looting
 - [ ] Inventory system
@@ -28,8 +28,7 @@
 - [x] Move spawn points to map
 - [x] Move NPC path to map
 - [x] Fix NPC movement animations
-- [ ] Wander action
-- [ ] WanderTo action
+- [x] Add character shadows
 
 ## v0.4.0 NPC
 
