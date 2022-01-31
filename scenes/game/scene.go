@@ -23,6 +23,7 @@ func (g *Scene) Preload() {
 	files := []string{
 		"spritesheets/Male 18-1.png",
 		"spritesheets/Female 24-1.png",
+		"spritesheets/LightShadow_pipo.png",
 		"tilesets/BaseChip.png",
 		"tilesets/Dirt1.png",
 		"tilesets/Grass1-Dirt1.png",
@@ -53,40 +54,71 @@ func (g *Scene) Setup(u engo.Updater) {
 	}
 	speedSystem.Level = tilemap.Level
 
+	playerSpawn, ok := tilemap.Spawns[PlayerSpawnName]
+	if !ok {
+		log.Println("no player spawn found in tilemap")
+	}
+
 	player, err := util.NewCharacter(util.NewCharacterOptions{
-		Position:       engo.Point{X: 800, Y: 600},
+		Position:       playerSpawn.Position,
 		SpritesheetURL: spritesheetURL,
 		CellWidth:      32,
 		CellHeight:     32,
+		CollisionGroup: util.CollisionPlayer,
 		AnimationRate:  0.1,
 		StartZIndex:    3,
 	})
 	if err != nil {
-		log.Printf("Failed to create Player entity, error: %s\n", err)
+		log.Printf("failed to create Player entity, error: %s\n", err)
 	}
-	player.CollisionComponent.Main = 1
 	player.ControlComponent.Enabled = true
 
+	playerShadow, err := util.NewCharacterShadow(player)
+	if err != nil {
+		log.Printf("failed to create Shadow entity, error: %s\n", err)
+	}
+	player.BasicEntity.AppendChild(playerShadow.GetBasicEntity())
+
+	npcSpawn, ok := tilemap.Spawns[NPCSpawnName]
+	if !ok {
+		log.Println("no npc spawn found in tilemap")
+	}
+
 	npc, err := util.NewCharacter(util.NewCharacterOptions{
-		Position:       engo.Point{X: 800, Y: 568},
+		Position:       npcSpawn.Position,
 		SpritesheetURL: "spritesheets/Female 24-1.png",
 		CellWidth:      32,
 		CellHeight:     32,
+		CollisionGroup: util.CollisionEntity,
 		AnimationRate:  0.1,
 		StartZIndex:    3,
 	})
 	if err != nil {
 		log.Printf("Failed to create NPC entity, error: %s\n", err)
 	}
-	npc.CollisionComponent.Main = 1
-	npc.CollisionComponent.Group = 1
 	npc.ActionComponent.Schedule = action.Schedule{
 		Actions: []action.Action{
-			{Type: action.ActWalkTo, Point: engo.Point{X: 900, Y: 600}},
-			{Type: action.ActWalkTo, Point: engo.Point{X: 700, Y: 600}},
+			{Type: action.ActWalkTo, Point: tilemap.Points["NPCPoint1"].Position},
+			{Type: action.ActWalkTo, Point: tilemap.Points["NPCPoint2"].Position},
+			{Type: action.ActWalkTo, Point: tilemap.Points["NPCPoint3"].Position},
+			{Type: action.ActWalkTo, Point: tilemap.Points["NPCPoint4"].Position},
+			{Type: action.ActWalkTo, Point: tilemap.Points["NPCPoint5"].Position},
+			{Type: action.ActWalkTo, Point: tilemap.Points["NPCPoint6"].Position},
+			{Type: action.ActWalkTo, Point: tilemap.Points["NPCPoint7"].Position},
+			{Type: action.ActWalkTo, Point: tilemap.Points["NPCPoint8"].Position},
+			{Type: action.ActWalkTo, Point: tilemap.Points["NPCPoint9"].Position},
+			{Type: action.ActWalkTo, Point: tilemap.Points["NPCPoint10"].Position},
+			{Type: action.ActWalkTo, Point: tilemap.Points["NPCPoint11"].Position},
+			{Type: action.ActWalkTo, Point: tilemap.Points["NPCPoint12"].Position},
 		},
 		Loop: true,
 	}
+
+	npcShadow, err := util.NewCharacterShadow(npc)
+	if err != nil {
+		log.Printf("failed to create Shadow entity, error: %s\n", err)
+	}
+	npc.BasicEntity.AppendChild(npcShadow.GetBasicEntity())
 
 	entityScroller := &common.EntityScroller{
 		SpaceComponent: &player.SpaceComponent,
@@ -105,7 +137,9 @@ func (g *Scene) Setup(u engo.Updater) {
 
 	tilemap.AddTilesToWorld(g.World)
 	g.World.AddEntity(player)
+	g.World.AddEntity(playerShadow)
 	g.World.AddEntity(npc)
+	g.World.AddEntity(npcShadow)
 
 	engo.Mailbox.Listen("WindowResizeMessage", func(msg engo.Message) {
 		offsetX, offsetY := engo.GameWidth()/2, engo.GameHeight()/2

@@ -45,12 +45,14 @@ const (
 	// FollowPath
 	// FollowEntity
 	// FollowSpaceComponent
+	// Wander/WanderTo
+	// Roll
+	// Jump
 	// Interact
 	// Attack
 	// Defend
 	// Magic
-	// Jump
-	// Anything else
+	// Anything else?
 )
 
 // An Action defines a single act for a Entity.

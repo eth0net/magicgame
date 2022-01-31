@@ -5,5 +5,10 @@ const (
 	tilemapURL     string = "tilemaps/fantasy1-min.tmx"
 )
 
+const (
+	PlayerSpawnName = "PlayerSpawn"
+	NPCSpawnName    = "NPCSpawn"
+)
+
 // SceneType is the unique type identifier for Scene.
 const SceneType string = "GameScene"

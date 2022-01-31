@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="50" height="50" tilewidth="32" tileheight="32" infinite="0" nextlayerid="18" nextobjectid="29">
+<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="50" height="50" tilewidth="32" tileheight="32" infinite="0" nextlayerid="22" nextobjectid="53">
  <editorsettings>
   <export target="fantasy1-min.tmx" format="tmx"/>
  </editorsettings>
@@ -14,7 +14,7 @@
  </layer>
  <layer id="7" name="Water" width="50" height="50">
   <data encoding="base64" compression="zlib">
-   eJzt00EOQDAQheHpoZST4WS4WK1NQ0MaFrVphv9LXsTuTV4qAgAAAAAAvs5rWk1Xu8hLqb93IoN+G2fznl72/nnGmqUKxS3SDnniLlY2edrC2iaTZpX7G4JmqVet2BfeRxQ3meXcJRz/lra4SvdY7Q8AAAAAAP5nA6d3HVQ=
+   eJzt00EKgCAUhOHnobJOVp2sulitU1IyocA28uT/YDau5jEoAgAAAAAAWmZd+pChcpc/Yn9rRCa50hl994xy988zV+xVwm+R7pDH76Jhk68tNG3Syh2LyyHvN+wuW7V2ZVr4557fZJXnLnt407JFKt6jtT8AAAAAAChzAloGJik=
   </data>
  </layer>
  <layer id="11" name="Trees" width="50" height="50">
@@ -27,30 +27,96 @@
    eJzt0TEKgDAUBNFs7n9R7fQEamETsRACzocZkLX84aW31s8vxZdww4y9/6s2eqz5+6LvLXl67AXfsUUPUnqw0oOVHqz0YKUHKz1Y6cFKD1Z6sNKDlR6s9GClBys9WOnBSg9WerDSg5UerPRg9eZxva/ajh7Vl3DDjD0ALV+BYA==
   </data>
  </layer>
- <objectgroup id="13" name="Collision">
+ <objectgroup id="13" name="Collisions">
   <properties>
    <property name="Collision" type="bool" value="true"/>
   </properties>
-  <object id="17" name="Top" x="0" y="0">
-   <polygon points="32,64 1568,64 1568,86 32,86"/>
+  <object id="32" name="Water3" type="Collision" x="640" y="736" width="320" height="128">
+   <polygon points="0,0 320,0 320,128 0,128"/>
   </object>
-  <object id="19" name="Left" x="0" y="64">
-   <polygon points="67.5,0 32,0 32,1504 67.5,1504"/>
+  <object id="33" name="Water2" type="Collision" x="672" y="672" width="256" height="256">
+   <polygon points="0,0 256,0 256,256 0,256"/>
   </object>
-  <object id="20" name="Right" x="1536" y="64">
-   <polygon points="-3.5,0 32,0 32,1504 -3.5,1504"/>
+  <object id="34" name="Water1" type="Collision" x="736" y="640" width="128" height="320">
+   <polygon points="0,0 128,0 128,320 0,320"/>
   </object>
-  <object id="21" name="Bottom" x="0" y="1536">
-   <polygon points="64,0 1536,0 1536,32 64,32"/>
+  <object id="37" name="West" type="Collision" x="32" y="32" width="32" height="1536">
+   <polygon points="0,0 32,0 32,1536 0,1536"/>
   </object>
-  <object id="26" name="Water1" x="768" y="640">
-   <polygon points="0,0 96,0 96,288 0,288"/>
+  <object id="35" name="South" type="Collision" x="32" y="1536" width="1536" height="32">
+   <polygon points="0,0 1536,0 1536,32 0,32"/>
   </object>
-  <object id="27" name="Water2" x="704" y="672">
-   <polygon points="0,0 224,0 224,224 0,224"/>
+  <object id="39" name="East" type="Collision" x="1536" y="32" width="32" height="1536">
+   <polygon points="0,0 32,0 32,1536 0,1536"/>
   </object>
-  <object id="28" name="Water3" x="672" y="736">
-   <polygon points="0,0 288,0 288,96 0,96"/>
+  <object id="36" name="North" type="Collision" x="32" y="32" width="1536" height="32">
+   <polygon points="0,0 1536,0 1536,32 0,32"/>
+  </object>
+ </objectgroup>
+ <objectgroup id="18" name="Spawns">
+  <object id="29" name="PlayerSpawn" type="Spawn" x="832" y="544" width="32" height="32"/>
+  <object id="30" name="NPCSpawn" type="Spawn" x="736" y="544" width="32" height="32"/>
+ </objectgroup>
+ <objectgroup id="19" name="Paths">
+  <object id="47" name="NPCPoint12" type="Point" x="608" y="1056" width="32" height="32">
+   <properties>
+    <property name="Next" type="object" value="45"/>
+   </properties>
+  </object>
+  <object id="43" name="NPCPoint11" type="Point" x="512" y="1056" width="32" height="32">
+   <properties>
+    <property name="Next" type="object" value="47"/>
+   </properties>
+  </object>
+  <object id="48" name="NPCPoint10" type="Point" x="512" y="960" width="32" height="32">
+   <properties>
+    <property name="Next" type="object" value="43"/>
+   </properties>
+  </object>
+  <object id="49" name="NPCPoint9" type="Point" x="1056" y="960" width="32" height="32">
+   <properties>
+    <property name="Next" type="object" value="48"/>
+   </properties>
+  </object>
+  <object id="42" name="NPCPoint8" type="Point" x="1056" y="1056" width="32" height="32">
+   <properties>
+    <property name="Next" type="object" value="49"/>
+   </properties>
+  </object>
+  <object id="50" name="NPCPoint7" type="Point" x="960" y="1056" width="32" height="32">
+   <properties>
+    <property name="Next" type="object" value="42"/>
+   </properties>
+  </object>
+  <object id="41" name="NPCPoint6" type="Point" x="960" y="512" width="32" height="32">
+   <properties>
+    <property name="Next" type="object" value="50"/>
+   </properties>
+  </object>
+  <object id="51" name="NPCPoint5" type="Point" x="1056" y="512" width="32" height="32">
+   <properties>
+    <property name="Next" type="object" value="41"/>
+   </properties>
+  </object>
+  <object id="52" name="NPCPoint4" type="Point" x="1056" y="608" width="32" height="32">
+   <properties>
+    <property name="Next" type="object" value="51"/>
+   </properties>
+  </object>
+  <object id="46" name="NPCPoint3" type="Point" x="512" y="608" width="32" height="32">
+   <properties>
+    <property name="Next" type="object" value="52"/>
+   </properties>
+  </object>
+  <object id="40" name="NPCPoint2" type="Point" x="512" y="512" width="32" height="32">
+   <properties>
+    <property name="Next" type="object" value="46"/>
+   </properties>
+  </object>
+  <object id="45" name="NPCPoint1" type="Point" x="608" y="512" width="32" height="32">
+   <properties>
+    <property name="Next" type="object" value="40"/>
+   </properties>
   </object>
  </objectgroup>
 </map>

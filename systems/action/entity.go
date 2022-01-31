@@ -1,6 +1,8 @@
 package action
 
 import (
+	"math"
+
 	"github.com/EngoEngine/ecs"
 	"github.com/EngoEngine/engo"
 	"github.com/EngoEngine/engo/common"
@@ -26,35 +28,37 @@ func (ce *actionEntity) setAnimation() {
 	newAnimationName := currentAnimation.Name
 
 	var (
-		xIsNegative bool = point.X < 0
-		xIsPositive bool = point.X > 0
-		xIsZero     bool = point.X == 0
+		xIsNegative bool = math.Round((float64(point.X)*100)/100) < 0
+		xIsPositive bool = math.Round((float64(point.X)*100)/100) > 0
+		xIsZero     bool = !xIsNegative && !xIsPositive
 
-		yIsNegative bool = point.Y < 0
-		yIsPositive bool = point.Y > 0
-		yIsZero     bool = point.Y == 0
+		yIsNegative bool = math.Round((float64(point.Y)*100)/100) < 0
+		yIsPositive bool = math.Round((float64(point.Y)*100)/100) > 0
+		yIsZero     bool = !yIsNegative && !yIsPositive
+
+		yIsBigger bool = math.Abs(float64(point.Y)) > math.Abs(float64(point.X))
 	)
 
 	switch {
-	case xIsZero && yIsZero:
-		switch currentAnimation.Name {
-		case AnimationMoveUp:
-			newAnimationName = AnimationStopUp
-		case AnimationMoveDown:
-			newAnimationName = AnimationStopDown
-		case AnimationMoveLeft:
-			newAnimationName = AnimationStopLeft
-		case AnimationMoveRight:
-			newAnimationName = AnimationStopRight
-		}
-	case xIsZero && yIsNegative:
-		newAnimationName = AnimationMoveUp
-	case xIsZero && yIsPositive:
-		newAnimationName = AnimationMoveDown
 	case xIsNegative:
 		newAnimationName = AnimationMoveLeft
 	case xIsPositive:
 		newAnimationName = AnimationMoveRight
+	case yIsBigger && yIsNegative:
+		newAnimationName = AnimationMoveUp
+	case yIsBigger && yIsPositive:
+		newAnimationName = AnimationMoveDown
+	case xIsZero && yIsZero:
+		switch currentAnimation.Name {
+		case AnimationMoveLeft:
+			newAnimationName = AnimationStopLeft
+		case AnimationMoveRight:
+			newAnimationName = AnimationStopRight
+		case AnimationMoveUp:
+			newAnimationName = AnimationStopUp
+		case AnimationMoveDown:
+			newAnimationName = AnimationStopDown
+		}
 	}
 
 	if currentAnimation.Name != newAnimationName {
