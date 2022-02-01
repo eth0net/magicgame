@@ -7,5 +7,10 @@
       "path": "../engo"
     }
   ],
-  "settings": {}
+  "settings": {
+    "files.associations": {
+        "*.tmx": "xml",
+        "*.tsx": "xml"
+    }
+  }
 }
